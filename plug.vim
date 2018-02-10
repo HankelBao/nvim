@@ -1,5 +1,8 @@
 call plug#begin("~/.vim/plugged")
 
+	" Code Display
+	Plug 'HankelBao/vim-blackarch-theme'
+
 	"Interface
 	Plug 'hecal3/vim-leader-guide'
 	Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
