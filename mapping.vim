@@ -13,6 +13,8 @@ let mapleader=","
 	noremap <Leader>o :Denite file<CR>
 	noremap <Leader>b :Denite buffer<CR>
 	noremap <Leader>q :q<CR>
+	noremap <Leader>e :edit 
+	noremap <Leader>c :cd 
 " }
 
 " Windows {
@@ -72,7 +74,13 @@ let mapleader=","
 	noremap <Leader>uu :PlugUpdate<CR>
 	noremap <Leader>ud :PlugClean<CR>
 	noremap <Leader>uc :Denite colorscheme<CR>
-	noremap <Leader>um :tabedit ~/dotfiles/vim/.vim-config/mapping.vim<CR>
-	noremap <Leader>up :tabedit ~/dotfiles/vim/.vim-config/plug.vim<CR>
-	noremap <Leader>ub :tabedit ~/dotfiles/vim/.vim-config/basic.vim<CR>
+	if has('win64') || has('win32')
+		noremap <Leader>um :tabedit C:\Users\hankelbao\AppData\Local\nvim\mapping.vim<CR>
+		noremap <Leader>up :tabedit C:\Users\hankelbao\AppData\Local\nvim\plug.vim<CR>
+		noremap <Leader>ub :tabedit C:\Users\hankelbao\AppData\Local\nvim\basic.vim<CR>
+	else
+		noremap <Leader>um :tabedit ~/dotfiles/vim/.vim-config/mapping.vim<CR>
+		noremap <Leader>up :tabedit ~/dotfiles/vim/.vim-config/plug.vim<CR>
+		noremap <Leader>ub :tabedit ~/dotfiles/vim/.vim-config/basic.vim<CR>
+	endif
 " }

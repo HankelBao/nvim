@@ -2,6 +2,7 @@ call plug#begin("~/.vim/plugged")
 
 	" Code Display
 	Plug 'HankelBao/vim-blackarch-theme'
+	Plug 'morhetz/gruvbox'
 
 	"Interface
 	Plug 'hecal3/vim-leader-guide'
@@ -11,14 +12,17 @@ call plug#begin("~/.vim/plugged")
 	"Language
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	let g:deoplete#enable_at_startup = 1	
+
 	Plug 'zchee/deoplete-jedi'
 	"Plug 'zchee/deoplete-go', { 'do': 'make'}
 	Plug 'Shougo/neco-vim'
+	Plug 'carlitux/deoplete-ternjs'
 
 call plug#end()
 
-if has("win64") || has("win32")
-	source ~\AppData\Local\nvim\plugins\vim-leader-guide.vim
-else
-	source ~/.config/nvim/plugins/vim-leader-guide.vim
-endif
+" vim-leader-guide {
+	let g:lmap =  {}
+	call leaderGuide#register_prefix_descriptions(",", "g:lmap")
+	nnoremap <space> :LeaderGuide ','<CR>
+	vnoremap <space> :LeaderGuideVisual ','<CR>
+" }
