@@ -14,7 +14,7 @@ call plug#begin("~/.vim/plugged")
 	let g:deoplete#enable_at_startup = 1	
 
 	Plug 'zchee/deoplete-jedi'
-	"Plug 'zchee/deoplete-go', { 'do': 'make'}
+	Plug 'zchee/deoplete-go', { 'do': 'make'}
 	Plug 'Shougo/neco-vim'
 	Plug 'carlitux/deoplete-ternjs'
 
