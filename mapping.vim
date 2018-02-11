@@ -12,7 +12,6 @@ let mapleader=","
 " Shortcuts{
 	noremap <Leader>o :Denite file<CR>
 	noremap <Leader>b :Denite buffer<CR>
-	noremap <Leader>q :q<CR>
 	noremap <Leader>e :edit 
 	noremap <Leader>c :cd 
 " }
@@ -30,21 +29,20 @@ let mapleader=","
 	noremap <Leader>9 :9wincmd w<CR>
 " }
 
-" Projects {
-	let g:lmap.p = { 'name' : 'Projects' }
-	noremap <Leader>ps :CtrlPSession<CR>
-	noremap <Leader>pc :Session 
-	noremap <Leader>pd :SQuit<CR>
-" }
-
 " Views {
-	let g:lmap.v = { 'name' : 'View' }
+	try
+		let g:lmap.v = { 'name' : 'View' }
+	catch
+	endtry
 	noremap <Leader>vn :NERDTreeToggle<CR>
 	noremap <Leader>vt :TagbarToggle<CR>
 " }
 
 " Files {
-	let g:lmap.f = { 'name': 'Files' }
+	try
+		let g:lmap.f = { 'name': 'Files' }
+	catch
+	endtry
 	noremap <Leader>fe :edit 
 	noremap <Leader>fs :w!<CR>
 	noremap <Leader>fq :qa<CR>
@@ -52,23 +50,29 @@ let mapleader=","
 " }
 
 " Edit {
-	let g:lmap.i = { 'name' : 'Edit' }
+	try
+		let g:lmap.i = { 'name' : 'Edit' }
+	catch
+	endtry
 	noremap <Leader>id !!date +\%F<CR>
 	noremap <Leader>it :call feedkeys("i" . strftime('%c'))<CR>
-	noremap <Leader>iw :StripWhitespace<CR>
-	noremap <Leader>ih :ToggleWhitespace<CR>
-	noremap <Leader>ib :Autoformat<CR>
 " }
 
 " Git {
-	let g:lmap.g = { 'name' : 'Git' }
+	try
+		let g:lmap.g = { 'name' : 'Git' }
+	catch
+	endtry
 	noremap <Leader>gs :Gstatus<CR>
 	noremap <Leader>gc :Gcommit<CR>
 	noremap <Leader>gp :Gpush<CR>
 " }
 
 " Update {
-	let g:lmap.u = { 'name' : 'Update' }
+	try
+		let g:lmap.u = { 'name' : 'Update' }
+	catch
+	endtry
 	noremap <Leader>us :source %<CR>
 	noremap <Leader>ui :PlugInstall<CR>
 	noremap <Leader>uu :PlugUpdate<CR>
