@@ -4,16 +4,14 @@
 
 let mapleader=","
 
-" Command and Terminal Command {
-	noremap ; :
-	noremap ' :!
-" }
-
 " Shortcuts{
-	noremap <Leader>o :Denite file<CR>
+	tnoremap <ESC> <C-\><C-n>
+	noremap <Leader><space> :
+	noremap <Leader>o :Denite file_rec<CR>
 	noremap <Leader>b :Denite buffer<CR>
 	noremap <Leader>e :edit 
 	noremap <Leader>c :cd 
+	noremap <Leader>q :q<CR>
 " }
 
 " Windows {
@@ -66,6 +64,9 @@ let mapleader=","
 	noremap <Leader>gs :Gstatus<CR>
 	noremap <Leader>gc :Gcommit<CR>
 	noremap <Leader>gp :Gpush<CR>
+	noremap <Leader>gb :Git branch<CR>
+	noremap <Leader>ga :Git add --a<CR>
+	noremap <Leader>go :Git checkout 
 " }
 
 " Update {

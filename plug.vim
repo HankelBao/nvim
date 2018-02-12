@@ -1,7 +1,7 @@
 call plug#begin("~/.vim/plugged")
 	" Code Display
 	Plug 'HankelBao/vim-blackarch-theme'
-	Plug 'morhetz/gruvbox'
+	Plug 'chriskempson/base16-vim'
 	" Interface
 	Plug 'hecal3/vim-leader-guide'
 	Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -30,6 +30,10 @@ call plug#end()
 		vnoremap <space> :LeaderGuideVisual ','<CR>
 	catch
 	endtry
+" }
+
+" deoplete {
+	let g:deoplete#enable_refresh_always = 1
 " }
 
 " deoplete-go {
