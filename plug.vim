@@ -1,15 +1,19 @@
 call plug#begin("~/.vim/plugged")
-	" Code Display
-	Plug 'HankelBao/vim-blackarch-theme'
+	" Colorscheme
 	Plug 'chriskempson/base16-vim'
 	" Interface
 	Plug 'hecal3/vim-leader-guide'
 	Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'tpope/vim-fugitive'
 	Plug 'scrooloose/nerdtree'
+	Plug 'Yggdroot/indentLine'
 	" Language
 	Plug 'majutsushi/tagbar'
 	Plug 'w0rp/ale'
+	Plug 'pangloss/vim-javascript'
+	Plug 'othree/html5.vim'
+	Plug 'posva/vim-vue'
+	Plug 'hail2u/vim-css3-syntax'
 	" Auto Completion
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'zchee/deoplete-jedi'
@@ -17,10 +21,6 @@ call plug#begin("~/.vim/plugged")
 	Plug 'Shougo/neco-vim'
 	Plug 'carlitux/deoplete-ternjs'
 call plug#end()
-
-" deoplete {
-	let g:deoplete#enable_at_startup = 1	
-"
 
 " vim-leader-guide {
 	try
@@ -33,8 +33,14 @@ call plug#end()
 " }
 
 " deoplete {
+	let g:deoplete#enable_at_startup = 1	
 	let g:deoplete#enable_refresh_always = 1
+"
+
+" deoplete-tern {
+	let g:deoplete#sources#ternjs#tern_bin = "ternjs"
 " }
+
 
 " deoplete-go {
 	try

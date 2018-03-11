@@ -5,6 +5,7 @@ if has("win64") || has("win32")
     source ~\appdata\local\nvim\mapping.vim
     source ~\appdata\local\nvim\basic.vim
 else
+    let g:python_host_prog='python'
     source ~/.config/nvim/plug.vim 
     source ~/.config/nvim/mapping.vim
     source ~/.config/nvim/basic.vim

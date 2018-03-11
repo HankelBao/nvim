@@ -5,6 +5,7 @@
 let mapleader=","
 
 " Shortcuts{
+	noremap ' :!
 	tnoremap <ESC> <C-\><C-n>
 	noremap <Leader><space> :
 	noremap <Leader>o :Denite file_rec<CR>
@@ -12,19 +13,30 @@ let mapleader=","
 	noremap <Leader>e :edit 
 	noremap <Leader>c :cd 
 	noremap <Leader>q :q<CR>
+	noremap <Leader>s :w<CR>
+	noremap <Leader>t :terminal<CR>
+	noremap <Leader>p :tabp<CR>
+	noremap <Leader>n :tabn<CR>
+	noremap <Leader>h <C-W>h
+	noremap <Leader>j <C-W>j
+	noremap <Leader>k <C-W>k
+	noremap <Leader>l <C-W>l
 " }
 
 " Windows {
 	noremap <Leader>w <C-W>
-	noremap <Leader>1 :1wincmd w<CR>
-	noremap <Leader>2 :2wincmd w<CR>
-	noremap <Leader>3 :3wincmd w<CR>
-	noremap <Leader>4 :4wincmd w<CR>
-	noremap <Leader>5 :5wincmd w<CR>
-	noremap <Leader>6 :6wincmd w<CR>
-	noremap <Leader>7 :7wincmd w<CR>
-	noremap <Leader>8 :8wincmd w<CR>
-	noremap <Leader>9 :9wincmd w<CR>
+" }
+
+" Tabs {
+	noremap <Leader>1 :tabn 1<CR>
+	noremap <Leader>2 :tabn 2<CR>
+	noremap <Leader>3 :tabn 3<CR>
+	noremap <Leader>4 :tabn 4<CR>
+	noremap <Leader>5 :tabn 5<CR>
+	noremap <Leader>6 :tabn 6<CR>
+	noremap <Leader>7 :tabn 7<CR>
+	noremap <Leader>8 :tabn 8<CR>
+	noremap <Leader>9 :tabn 9<CR>
 " }
 
 " Views {
@@ -54,6 +66,11 @@ let mapleader=","
 	endtry
 	noremap <Leader>id !!date +\%F<CR>
 	noremap <Leader>it :call feedkeys("i" . strftime('%c'))<CR>
+	noremap <Leader>ij :call JsBeautify()<cr>
+	noremap <Leader>is :call JsonBeautify()<cr>
+	noremap <Leader>ix :call JsxBeautify()<cr>
+	noremap <Leader>ih :call HtmlBeautify()<cr>
+	noremap <Leader>ic :call CSSBeautify()<cr>
 " }
 
 " Git {
@@ -84,8 +101,8 @@ let mapleader=","
 		noremap <Leader>up :tabedit C:\Users\hankelbao\AppData\Local\nvim\plug.vim<CR>
 		noremap <Leader>ub :tabedit C:\Users\hankelbao\AppData\Local\nvim\basic.vim<CR>
 	else
-		noremap <Leader>um :tabedit ~/dotfiles/vim/.vim-config/mapping.vim<CR>
-		noremap <Leader>up :tabedit ~/dotfiles/vim/.vim-config/plug.vim<CR>
-		noremap <Leader>ub :tabedit ~/dotfiles/vim/.vim-config/basic.vim<CR>
+		noremap <Leader>um :tabedit ~/.config/nvim/mapping.vim<CR>
+		noremap <Leader>up :tabedit ~/.config/nvim/plug.vim<CR>
+		noremap <Leader>ub :tabedit ~/.config/nvim/basic.vim<CR>
 	endif
 " }
