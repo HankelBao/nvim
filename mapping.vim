@@ -2,14 +2,14 @@
 " Mappings for Vim
 " Including those for plugins
 
-let mapleader=","
+let mapleader=" "
 
 " Shortcuts{
 	noremap ' :!
 	tnoremap <ESC> <C-\><C-n>
 	noremap <Leader><space> :
-	noremap <Leader>o :Denite file_rec<CR>
-	noremap <Leader>b :Denite buffer<CR>
+	noremap <Leader>o :CtrlPFunky<CR>
+	noremap <Leader>b :CtrlPBuffer<CR>
 	noremap <Leader>e :edit 
 	noremap <Leader>c :cd 
 	noremap <Leader>q :q<CR>
@@ -40,19 +40,12 @@ let mapleader=","
 " }
 
 " Views {
-	try
-		let g:lmap.v = { 'name' : 'View' }
-	catch
-	endtry
 	noremap <Leader>vn :NERDTreeToggle<CR>
 	noremap <Leader>vt :TagbarToggle<CR>
+	noremap <Leader>vf :FullscreenToggle<CR>
 " }
 
 " Files {
-	try
-		let g:lmap.f = { 'name': 'Files' }
-	catch
-	endtry
 	noremap <Leader>fe :edit 
 	noremap <Leader>fs :w!<CR>
 	noremap <Leader>fq :qa<CR>
@@ -60,10 +53,6 @@ let mapleader=","
 " }
 
 " Edit {
-	try
-		let g:lmap.i = { 'name' : 'Edit' }
-	catch
-	endtry
 	noremap <Leader>id !!date +\%F<CR>
 	noremap <Leader>it :call feedkeys("i" . strftime('%c'))<CR>
 	noremap <Leader>ij :call JsBeautify()<cr>
@@ -74,10 +63,6 @@ let mapleader=","
 " }
 
 " Git {
-	try
-		let g:lmap.g = { 'name' : 'Git' }
-	catch
-	endtry
 	noremap <Leader>gs :Gstatus<CR>
 	noremap <Leader>gc :Gcommit<CR>
 	noremap <Leader>gp :Gpush<CR>
@@ -87,19 +72,15 @@ let mapleader=","
 " }
 
 " Update {
-	try
-		let g:lmap.u = { 'name' : 'Update' }
-	catch
-	endtry
 	noremap <Leader>us :source %<CR>
 	noremap <Leader>ui :PlugInstall<CR>
 	noremap <Leader>uu :PlugUpdate<CR>
 	noremap <Leader>ud :PlugClean<CR>
-	noremap <Leader>uc :Denite colorscheme<CR>
 	if has('win64') || has('win32')
 		noremap <Leader>um :tabedit C:\Users\hankelbao\AppData\Local\nvim\mapping.vim<CR>
 		noremap <Leader>up :tabedit C:\Users\hankelbao\AppData\Local\nvim\plug.vim<CR>
 		noremap <Leader>ub :tabedit C:\Users\hankelbao\AppData\Local\nvim\basic.vim<CR>
+		noremap <Leader>ua :tabedit C:\Users\hankelbao\AppData\Local\nvim\init.vim<CR>
 	else
 		noremap <Leader>um :tabedit ~/.config/nvim/mapping.vim<CR>
 		noremap <Leader>up :tabedit ~/.config/nvim/plug.vim<CR>
