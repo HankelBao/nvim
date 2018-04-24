@@ -1,11 +1,4 @@
-""" HankelBao's Neovim Configuration File {{{
-" Please visit https://github.com/HankelBao/nvim
-" It consists of:
-" * Settings for Python
-" * Plugins and Configurations
-" * Shortcuts and Mappings
-" * Basic Configurations
-""" }}}
+""" HankelBao's Neovim Configuration File
 
 """ Settings for Python {{{
 if has("win64") || has("win32")
@@ -31,9 +24,10 @@ call plug#begin("~/.vim/plugged")
     Plug 'majutsushi/tagbar'
     Plug 'posva/vim-vue'
     Plug 'pangloss/vim-javascript'
+    Plug 'artur-shaik/vim-javacomplete2'
     " Plug 'w0rp/ale'
     " Auto Completion
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim'
     Plug 'ervandew/supertab'
     Plug 'zchee/deoplete-jedi'
     Plug 'Shougo/neco-vim'
@@ -57,6 +51,14 @@ let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
     else
         let g:deoplete#sources#go#gocode_binary = "~/go/bin/gocode"
     endif
+" }
+" javacomplete2 {
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+let g:deoplete#omni_patterns = {}
+"let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = []
+let g:deoplete#file#enable_buffer_path = 1
 " }
 " ctags {
     let g:tagbar_type_go = {
@@ -169,7 +171,7 @@ set cursorline
 filetype plugin on
 set shiftwidth=4 
 set tabstop=4
-colorscheme base16-gruvbox-dark-medium
+colorscheme base16-onedark
 set laststatus=1
 set showtabline=0
 set hidden
