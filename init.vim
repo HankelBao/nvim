@@ -27,13 +27,25 @@ call plug#begin("~/.vim/plugged")
     Plug 'artur-shaik/vim-javacomplete2'
     " Plug 'w0rp/ale'
     " Auto Completion
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'ervandew/supertab'
-    Plug 'zchee/deoplete-jedi'
-    Plug 'Shougo/neco-vim'
-    Plug 'carlitux/deoplete-ternjs'
-    Plug 'sebastianmarkow/deoplete-rust'
+    "Plug 'Shougo/deoplete.nvim'
+    "Plug 'ervandew/supertab'
+    Plug 'prabirshrestha/async.vim'
+    Plug 'prabirshrestha/vim-lsp'
+    "Plug 'zchee/deoplete-jedi'
+    "Plug 'Shougo/neco-vim'
+    "Plug 'carlitux/deoplete-ternjs'
+    "Plug 'sebastianmarkow/deoplete-rust'
 call plug#end()
+" lsp {
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+" }
 " supertab {
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -163,7 +175,6 @@ let mapleader=","
 """ }}}
 
 """ Basic Configuration {{{
-set number
 set foldmethod=indent
 set foldlevel=8
 set noswapfile
