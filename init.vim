@@ -2,7 +2,6 @@
 
 """ Settings for Python {{{
 if has("win64") || has("win32")
-    let g:python_host_prog='C:\Users\hankelbao\AppData\Local\Programs\Python\Python36\python.exe'
     let g:python3_host_prog='C:\Users\hankelbao\AppData\Local\Programs\Python\Python36\python.exe'
 else
     let g:python_host_prog='python'
@@ -17,25 +16,15 @@ call plug#begin("~/.vim/plugged")
     Plug 'colepeters/spacemacs-theme.vim'
     Plug 'yggdroot/indentline'
     " Interface
-    Plug 'vim-ctrlspace/vim-ctrlspace'
+    Plug 'Shougo/denite.nvim'
     Plug 'lambdalisue/vim-fullscreen'
     Plug 'tpope/vim-fugitive'
     Plug 'scrooloose/nerdtree'
     " Language
-    " Plug 'majutsushi/tagbar'
-    " Plug 'posva/vim-vue'
-    " Plug 'pangloss/vim-javascript'
-    " Plug 'artur-shaik/vim-javacomplete2'
-    " Plug 'w0rp/ale'
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    " Auto Completion
+    Plug 'Shougo/echodoc.vim'
 call plug#end()
 
 if executable('pyls')
-    " pip install python-language-server
     au User lsp_setup call lsp#register_server({
         \ 'name': 'pyls',
         \ 'cmd': {server_info->['pyls']},
@@ -43,9 +32,39 @@ if executable('pyls')
         \ })
 endif
 
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'typescript-language-server',
+      \ 'cmd': { server_info->['typescript-language-server --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx']
+      \ })
+endif
+
+let g:lsp_signs_enabled = 1         " enable signs
+let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+set completeopt-=preview
+
+let g:echodoc#enable_at_startup = 1
+set noshowmode
+
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
+    \ 'name': 'necovim',
+    \ 'whitelist': ['vim'],
+    \ 'completor': function('asyncomplete#sources#necovim#completor'),
+    \ }))
 
 " Fullscreen {
     " In ginit.vim
@@ -60,24 +79,17 @@ let mapleader=" "
     noremap ; :
     noremap ' :!
     tnoremap <ESC> <C-\><C-n>
-    noremap <Leader>o :CtrlSpace o<CR>
-    noremap <Leader>b :CtrlSpace b<CR>
+    noremap <Leader>f :Denite file<CR>
+    noremap <Leader>b :Denite buffer<CR>
     noremap <Leader>w <C-W>
-    noremap <Leader>l :CtrlSpace l<CR>
-    noremap <Leader>h :CtrlSpace h<CR>
     noremap <Leader>e :edit 
     noremap <Leader>t :terminal<CR>
+    noremap <Leader>c :cd 
 " }
 " Views {
     noremap <Leader>vn :NERDTreeToggle<CR>
     noremap <Leader>vt :TagbarToggle<CR>
     noremap <Leader>vf :FullscreenToggle<CR>
-" }
-" Files {
-    noremap <Leader>fe :edit 
-    noremap <Leader>fs :w!<CR>
-    noremap <Leader>fq :qa<CR>
-    noremap <Leader>ff :wqa<CR>
 " }
 " Edit {
     noremap <Leader>id !!date +\%F<CR>
@@ -123,6 +135,8 @@ set laststatus=1
 set showtabline=0
 set hidden
 set expandtab
+set bg=dark
+colorscheme base16-solarized-light
 autocmd FileType vim setlocal foldmethod=marker
 " if filereadable(expand("~/.vimrc_background"))
 "   let base16colorspace=256
