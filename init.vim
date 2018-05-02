@@ -4,7 +4,6 @@
 if has("win64") || has("win32")
     let g:python3_host_prog='C:\Users\hankelbao\AppData\Local\Programs\Python\Python36\python.exe'
 else
-    let g:python_host_prog='python'
     let g:python3_host_prog='python3'
 endif
 """ }}}
@@ -15,62 +14,40 @@ call plug#begin("~/.vim/plugged")
     Plug 'chriskempson/base16-vim'
     Plug 'colepeters/spacemacs-theme.vim'
     Plug 'yggdroot/indentline'
+    Plug 'houtsnip/vim-emacscommandline'
     " Interface
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'yuttie/comfortable-motion.vim'
     Plug 'Shougo/denite.nvim'
+    Plug 'shougo/neomru.vim'
+    Plug 'chemzqm/denite-git'
     Plug 'lambdalisue/vim-fullscreen'
     Plug 'tpope/vim-fugitive'
     Plug 'scrooloose/nerdtree'
+    Plug 'thaerkh/vim-workspace'
     " Language
-    Plug 'Shougo/echodoc.vim'
+    Plug 'neomake/neomake'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'Shougo/neco-vim'
+    Plug 'zchee/deoplete-jedi'
 call plug#end()
 
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
+let g:deoplete#enable_at_startup = 1
 
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
+let g:neomake_python_enabled_makers = ['pylint']
+let g:neomake_error_sign = {'text': 'E', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': 'W', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': 'M', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign = {'text': 'I', 'texthl': 'NeomakeInfoSign'}
 
-if executable('typescript-language-server')
-    au User lsp_setup call lsp#register_server({
-      \ 'name': 'typescript-language-server',
-      \ 'cmd': { server_info->['typescript-language-server --stdio']},
-      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-      \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx']
-      \ })
-endif
+call neomake#configure#automake('w')
+call neomake#configure#automake('nw', 750)
+call neomake#configure#automake('rw', 1000)
+call neomake#configure#automake('nrwi', 500)
 
-let g:lsp_signs_enabled = 1         " enable signs
-let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
-set completeopt-=preview
+let g:fullscreen#start_command = "call rpcnotify(0, 'Gui', 'WindowFullScreen', 1)"
+let g:fullscreen#stop_command = "call rpcnotify(0, 'Gui', 'WindowFullScreen', 0)"
 
-let g:echodoc#enable_at_startup = 1
-set noshowmode
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
-    \ 'name': 'necovim',
-    \ 'whitelist': ['vim'],
-    \ 'completor': function('asyncomplete#sources#necovim#completor'),
-    \ }))
-
-" Fullscreen {
-    " In ginit.vim
-    let g:fullscreen#start_command = "call rpcnotify(0, 'Gui', 'WindowFullScreen', 1)"
-    let g:fullscreen#stop_command = "call rpcnotify(0, 'Gui', 'WindowFullScreen', 0)"
-" }
 """ }}}
 
 """ Shortcuts and Mappings {{{
@@ -106,7 +83,7 @@ let mapleader=" "
     noremap <Leader>gp :Gpush<CR>
     noremap <Leader>gb :Git branch<CR>
     noremap <Leader>ga :Git add --a<CR>
-    noremap <Leader>go :Git checkout 
+    noremap <Leader>go :Git checkout
 " }
 " Update {
     noremap <Leader>us :source %<CR>
@@ -124,22 +101,17 @@ let mapleader=" "
 """ }}}
 
 """ Basic Configuration {{{
-set foldmethod=indent
-set foldlevel=8
+set guioptions=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
 set noswapfile
-set cursorline
 filetype plugin on
 set shiftwidth=4 
 set tabstop=4
-set laststatus=1
+set laststatus=2
 set showtabline=0
-set hidden
 set expandtab
-set bg=dark
+
 colorscheme base16-solarized-light
-autocmd FileType vim setlocal foldmethod=marker
-" if filereadable(expand("~/.vimrc_background"))
-"   let base16colorspace=256
-"   source ~/.vimrc_background
-" endif
 """ }}}
