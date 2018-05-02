@@ -14,23 +14,39 @@ call plug#begin("~/.vim/plugged")
     Plug 'chriskempson/base16-vim'
     Plug 'colepeters/spacemacs-theme.vim'
     Plug 'yggdroot/indentline'
-    Plug 'houtsnip/vim-emacscommandline'
     " Interface
+    Plug 'houtsnip/vim-emacscommandline'
     Plug 'jiangmiao/auto-pairs'
     Plug 'yuttie/comfortable-motion.vim'
-    Plug 'Shougo/denite.nvim'
-    Plug 'shougo/neomru.vim'
-    Plug 'chemzqm/denite-git'
     Plug 'lambdalisue/vim-fullscreen'
     Plug 'tpope/vim-fugitive'
     Plug 'scrooloose/nerdtree'
     Plug 'thaerkh/vim-workspace'
+    Plug 'majutsushi/tagbar'
+    " Denite
+    Plug 'Shougo/denite.nvim'
+    Plug 'shougo/neomru.vim'
+    Plug 'chemzqm/denite-git'
     " Language
     Plug 'neomake/neomake'
     Plug 'Shougo/deoplete.nvim'
     Plug 'Shougo/neco-vim'
     Plug 'zchee/deoplete-jedi'
 call plug#end()
+
+" Change mappings.
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-j>',
+      \ '<denite:move_to_next_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-k>',
+      \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
 
 let g:deoplete#enable_at_startup = 1
 
@@ -39,7 +55,6 @@ let g:neomake_error_sign = {'text': 'E', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': 'W', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': 'M', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign = {'text': 'I', 'texthl': 'NeomakeInfoSign'}
-
 call neomake#configure#automake('w')
 call neomake#configure#automake('nw', 750)
 call neomake#configure#automake('rw', 1000)
@@ -56,46 +71,42 @@ let mapleader=" "
     noremap ; :
     noremap ' :!
     tnoremap <ESC> <C-\><C-n>
-    noremap <Leader>f :Denite file<CR>
-    noremap <Leader>b :Denite buffer<CR>
+    noremap <Leader>o :Denite -auto-resize outline<CR>
+    noremap <Leader>f :Denite -auto-resize file<CR>
+    noremap <Leader>b :Denite -auto-resize buffer<CR>
     noremap <Leader>w <C-W>
-    noremap <Leader>e :edit 
-    noremap <Leader>t :terminal<CR>
-    noremap <Leader>c :cd 
+    noremap <Leader>e :edit
 " }
 " Views {
     noremap <Leader>vn :NERDTreeToggle<CR>
     noremap <Leader>vt :TagbarToggle<CR>
     noremap <Leader>vf :FullscreenToggle<CR>
+    noremap <Leader>vT :terminal<CR>
+" }
+" Tabs {
+    noremap <Leader>n :tabn<CR>
+    noremap <Leader>p :tabp<CR>
 " }
 " Edit {
     noremap <Leader>id !!date +\%F<CR>
     noremap <Leader>it :call feedkeys("i" . strftime('%c'))<CR>
-    noremap <Leader>ij :call JsBeautify()<cr>
-    noremap <Leader>is :call JsonBeautify()<cr>
-    noremap <Leader>ix :call JsxBeautify()<cr>
-    noremap <Leader>ih :call HtmlBeautify()<cr>
-    noremap <Leader>ic :call CSSBeautify()<cr>
 " }
 " Git {
     noremap <Leader>gs :Gstatus<CR>
     noremap <Leader>gc :Gcommit<CR>
     noremap <Leader>gp :Gpush<CR>
-    noremap <Leader>gb :Git branch<CR>
+    noremap <Leader>gb :Denite gitbranch<CR>
     noremap <Leader>ga :Git add --a<CR>
     noremap <Leader>go :Git checkout
 " }
-" Update {
-    noremap <Leader>us :source %<CR>
-    noremap <Leader>ui :PlugInstall<CR>
-    noremap <Leader>uu :PlugUpdate<CR>
-    noremap <Leader>ud :PlugClean<CR>
+" Settings {
+    noremap <Leader>s% :source %<CR>
+    noremap <Leader>si :PlugInstall<CR>
+    noremap <Leader>su :PlugUpdate<CR>
+    noremap <Leader>sd :PlugClean<CR>
+    noremap <Leader>sc :Denite -auto-resize colorscheme<CR>
     if has('win64') || has('win32')
-        noremap <Leader>uc :tabedit C:\Users\hankelbao\AppData\Local\nvim\init.vim<CR>
-    else
-        noremap <Leader>um :tabedit ~/.config/nvim/mapping.vim<CR>
-        noremap <Leader>up :tabedit ~/.config/nvim/plug.vim<CR>
-        noremap <Leader>ub :tabedit ~/.config/nvim/basic.vim<CR>
+        noremap <Leader>ss :tabedit C:\Users\hankelbao\AppData\Local\nvim\init.vim<CR>
     endif
 " }
 """ }}}
@@ -113,5 +124,5 @@ set laststatus=2
 set showtabline=0
 set expandtab
 
-colorscheme base16-solarized-light
+colorscheme base16-solarized-dark
 """ }}}
