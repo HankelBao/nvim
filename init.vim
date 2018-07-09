@@ -13,56 +13,43 @@ call plug#begin("~/.vim/plugged")
     " Colorscheme
     Plug 'chriskempson/base16-vim'
     Plug 'yggdroot/indentline'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
     " Interface
     Plug 'houtsnip/vim-emacscommandline'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'lambdalisue/vim-fullscreen'
     Plug 'scrooloose/nerdtree'
     Plug 'pbrisbin/vim-mkdir'
     Plug 'tpope/vim-fugitive'
     Plug 'hecal3/vim-leader-guide'
     Plug 'majutsushi/tagbar'
     Plug 'qpkorr/vim-bufkill'
+    Plug 'tpope/vim-commentary'
     " Denite
-    Plug 'Shougo/denite.nvim'
     Plug 'kien/ctrlp.vim'
     Plug 'FelikZ/ctrlp-py-matcher'
     " Language
     Plug 'sheerun/vim-polyglot'
     Plug 'thinca/vim-quickrun'
     Plug 'neomake/neomake'
-    Plug 'Shougo/deoplete.nvim'
-    "Plug 'roxma/nvim-yarp'
-    "Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'roxma/nvim-completion-manager'
     Plug 'Shougo/neco-vim'
-    Plug 'zchee/deoplete-jedi'
-    Plug 'carlitux/deoplete-ternjs'
+    " Plug 'ncm2/ncm2'
+    " Plug 'roxma/nvim-yarp'"
+    " Plug 'ncm2/ncm2-bufword'
+    " Plug 'ncm2/ncm2-path'
+    " Plug 'ncm2/ncm2-jedi'
 call plug#end()
-
-" Change mappings.
-let g:lmap =  {}
-call denite#custom#map(
-      \ 'insert',
-      \ '<C-j>',
-      \ '<denite:move_to_next_line>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'insert',
-      \ '<C-k>',
-      \ '<denite:move_to_previous_line>',
-      \ 'noremap'
-      \)
 
 let g:ctrlp_by_filename = 1
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
 endif
+ 
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" set completeopt=noinsert,menuone,noselect
 
-let g:deoplete#enable_at_startup = 1
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_error_sign = {'text': 'E', 'texthl': 'NeomakeErrorSign'}
@@ -74,13 +61,11 @@ call neomake#configure#automake('nw', 750)
 call neomake#configure#automake('rw', 1000)
 call neomake#configure#automake('nrwi', 500)
 
-let g:fullscreen#start_command = "call rpcnotify(0, 'Gui', 'WindowFullScreen', 1)"
-let g:fullscreen#stop_command = "call rpcnotify(0, 'Gui', 'WindowFullScreen', 0)"
-
 """ }}}
 
 """ Shortcuts and Mappings {{{
 let mapleader=" "
+let g:lmap =  {}
 let g:lmap.f = { 'name' : '+File' }
 let g:lmap.b = { 'name' : '+Buffer' }
 let g:lmap.s = { 'name' : '+Search' }
@@ -122,7 +107,6 @@ noremap <Leader>mc :QuickRun<CR>
 " Views 
 noremap <Leader>vn :NERDTreeToggle<CR>
 noremap <Leader>vt :TagbarToggle<CR>
-noremap <Leader>vf :FullscreenToggle<CR>
 noremap <Leader>vT :terminal Powershell<CR>
 " Nevigation
 noremap <Leader>nn :tabn<CR>
@@ -130,6 +114,7 @@ noremap <Leader>np :tabp<CR>
 " Edit
 noremap <Leader>id !!date +\%F<CR>
 noremap <Leader>it :call feedkeys("i" . strftime('%c'))<CR>
+noremap <Leader>ic :Commentary<CR>
 " Settings
 noremap <Leader>s% :source %<CR>
 noremap <Leader>si :PlugInstall<CR>
@@ -141,22 +126,20 @@ if has('win64') || has('win32')
 endif
 
 """ Basic Configuration {{{
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
+set shortmess=atc
 set noswapfile
 filetype plugin on
 set tabstop=4
 set shiftwidth=4
-set laststatus=2
+set laststatus=1
 set showtabline=0
 set expandtab
 set noshowmode
-set bg=light
 set autochdir
-set laststatus=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
-colorscheme base16-gruvbox-dark-medium
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+endif
 """ }}}
