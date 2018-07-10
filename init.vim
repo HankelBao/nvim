@@ -25,6 +25,8 @@ call plug#begin("~/.vim/plugged")
     Plug 'kien/ctrlp.vim'
     Plug 'FelikZ/ctrlp-py-matcher'
     Plug 'justinmk/vim-dirvish'
+    Plug 'Shougo/denite.nvim'
+    Plug 'Shougo/defx.nvim'
     " Plug 'vim-airline/vim-airline'
     " Plug 'vim-airline/vim-airline-themes'
     " Language
@@ -52,20 +54,13 @@ endif
 " autocmd BufEnter * call ncm2#enable_for_buffer()
 " set completeopt=noinsert,menuone,noselect
 
-let g:UltiSnipsJumpForwardTrigger = "<Tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-K>"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
 let g:UltiSnipsExpandTrigger = "<Plug>ultisnips_expand"
-imap <expr> <Tab>  pumvisible() ? "\<Plug>expand_or_nl" : "\<Tab>"
-imap <expr> <Plug>expand_or_nl (cm#completed_is_snippet() ? "\<Plug>ultisnips_expand" : "\<C-N>")
+imap <expr> <CR>  pumvisible() ? "\<Plug>ultisnips_expand" : "\<CR>"
 
-" let g:UltiSnipsJumpForwardTrigger = "<C-J>"
-" let g:UltiSnipsJumpBackwardTrigger = "<C-K>"
-
-" let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
-" inoremap <silent> <C-J> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
-
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 let g:neomake_python_enabled_makers = ['flake8']
 call neomake#configure#automake('w')
