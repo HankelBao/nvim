@@ -16,22 +16,26 @@ call plug#begin("~/.vim/plugged")
     " Interface
     Plug 'houtsnip/vim-emacscommandline'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'scrooloose/nerdtree'
     Plug 'pbrisbin/vim-mkdir'
     Plug 'tpope/vim-fugitive'
     Plug 'hecal3/vim-leader-guide'
     Plug 'majutsushi/tagbar'
     Plug 'qpkorr/vim-bufkill'
     Plug 'tpope/vim-commentary'
-    " Denite
     Plug 'kien/ctrlp.vim'
     Plug 'FelikZ/ctrlp-py-matcher'
+    Plug 'justinmk/vim-dirvish'
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline-themes'
     " Language
     Plug 'sheerun/vim-polyglot'
     Plug 'thinca/vim-quickrun'
     Plug 'neomake/neomake'
     Plug 'roxma/nvim-completion-manager'
     Plug 'Shougo/neco-vim'
+    Plug 'roxma/ncm-clang'
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
     " Plug 'ncm2/ncm2'
     " Plug 'roxma/nvim-yarp'"
     " Plug 'ncm2/ncm2-bufword'
@@ -44,23 +48,27 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   let g:ctrlp_use_caching = 0
 endif
- 
+
 " autocmd BufEnter * call ncm2#enable_for_buffer()
 " set completeopt=noinsert,menuone,noselect
 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-K>"
+let g:UltiSnipsExpandTrigger = "<Plug>ultisnips_expand"
+imap <expr> <Tab>  pumvisible() ? "\<Plug>expand_or_nl" : "\<Tab>"
+imap <expr> <Plug>expand_or_nl (cm#completed_is_snippet() ? "\<Plug>ultisnips_expand" : "\<C-N>")
+
+" let g:UltiSnipsJumpForwardTrigger = "<C-J>"
+" let g:UltiSnipsJumpBackwardTrigger = "<C-K>"
+
+" let g:UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+" inoremap <silent> <C-J> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_error_sign = {'text': 'E', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {'text': 'W', 'texthl': 'NeomakeWarningSign'}
-let g:neomake_message_sign = {'text': 'M', 'texthl': 'NeomakeMessageSign'}
-let g:neomake_info_sign = {'text': 'I', 'texthl': 'NeomakeInfoSign'}
 call neomake#configure#automake('w')
-call neomake#configure#automake('nw', 750)
-call neomake#configure#automake('rw', 1000)
-call neomake#configure#automake('nrwi', 500)
-
 """ }}}
 
 """ Shortcuts and Mappings {{{
@@ -106,8 +114,8 @@ noremap <Leader>ec :lclose<CR>
 noremap <Leader>mc :QuickRun<CR>
 " Views 
 noremap <Leader>vn :NERDTreeToggle<CR>
-noremap <Leader>vt :TagbarToggle<CR>
-noremap <Leader>vT :terminal Powershell<CR>
+" noremap <Leader>vt :TagbarToggle<CR>
+noremap <Leader>vt :call vimterm#toggle()<CR>
 " Nevigation
 noremap <Leader>nn :tabn<CR>
 noremap <Leader>np :tabp<CR>
@@ -135,8 +143,8 @@ set laststatus=1
 set showtabline=0
 set expandtab
 set noshowmode
-set autochdir
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
+" set autochdir
+set number
 
 if filereadable(expand("~/.vimrc_background"))
     let base16colorspace=256
