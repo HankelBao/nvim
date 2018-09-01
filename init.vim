@@ -5,6 +5,7 @@ if has("win64") || has("win32")
     let g:python3_host_prog='C:\Users\hankelbao\AppData\Local\Programs\Python\Python37-32\python.exe'
 else
     let g:python3_host_prog='python3'
+    let g:python_host_prog='python3'
 endif
 """ }}}
 
@@ -26,133 +27,69 @@ call plug#begin("~/.vim/plugged")
     Plug 'jiangmiao/auto-pairs'
     Plug 'tpope/vim-commentary'
 
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
     Plug 'scrooloose/nerdtree'
 
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
-    Plug 'itchyny/lightline.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
     Plug 'thinca/vim-quickrun'
-    " Plug 'neomake/neomake'
-    " Plug 'w0rp/ale'
     Plug 'posva/vim-vue'
 
+
+
     " Plug 'Shougo/deoplete.nvim'
-    " Plug 'zchee/deoplete-jedi'
+    " Plug 'Shougo/neco-vim'
     " let g:deoplete#enable_at_startup = 1
 
-    Plug 'Shougo/echodoc.vim'
-    let g:echodoc#enable_at_startup = 1
-
-    " Plug 'ncm2/ncm2'
-    " Plug 'roxma/nvim-yarp'
-    " Plug 'ncm2/ncm2-bufword'
-    " Plug 'ncm2/ncm2-path'
-    " Plug 'ncm2/ncm2-jedi'
-    " autocmd BufEnter * call ncm2#enable_for_buffer()
+    " assuming your using vim-plug: https://github.com/junegunn/vim-plug
+    Plug 'ncm2/ncm2'
+    Plug 'roxma/nvim-yarp'
+ 
+    " enable ncm2 for all buffers
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+    
+    " IMPORTANTE: :help Ncm2PopupOpen for more information
     set completeopt=noinsert,menuone,noselect
+   
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-tmux'
+    Plug 'ncm2/ncm2-path'
+    Plug 'ncm2/ncm2-jedi'
 
-    Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
+
+    " Plug 'autozimu/LanguageClient-neovim', {
+    "     \ 'branch': 'next',
+    "     \ 'do': 'bash install.sh',
+    "     \ }
+
+    " Plug 'neoclide/coc.nvim', {'do': 'yarn install'}
     " set completeopt=menu
 
     Plug 'Shougo/denite.nvim'
 
-    " Plug 'autozimu/LanguageClient-neovim', {
-    "     \ 'branch': 'next',
-    "     \ 'do': 'powershell -executionpolicy bypass -File install.ps1',
-    "     \ }
 
     " Plug 'ncm2/ncm2-ultisnips'
     " Plug 'SirVer/ultisnips'
 
 call plug#end()
 
-" let g:airline_powerline_fonts = 1
-" let g:deoplete#enable_at_startup = 1
-" let g:neomake_python_enabled_makers = ['autopep8']
-" call neomake#configure#automake('w', 0)
 let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
+    \ 'vue': ['vls'],
+    \ 'javascript': ['javascript-typescript-stdio']
     \ }
-" let g:LanguageClient_serverCommands = {
-"     \ 'vue': ['vls']
-"     \ }
 
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
-    " " When the <Enter> key is pressed while the popup menu is visible, it only
-    " " hides the menu. Use this mapping to close the menu and also start a new
-    " " line.
-    " inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-    " " Use <TAB> to select the popup menu:
-    " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Use tab for trigger completion with characters ahead.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <cr> for confirm completion.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Show signature help while editing
-autocmd CursorHoldI,CursorMovedI * silent! call CocAction('showSignatureHelp')
-
-" Open quickfix list on quickfix change triggered by coc
-autocmd User CocQuickfixChange :copen
-
-" Remap for rename current word
-
-" Use `:Format` for format current file
-command! -nargs=0 Format :call CocAction('format')
-
-" Add diagnostic info for https://github.com/itchyny/lightline.vim
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
-
-
-" Shortcuts for denite interface
-" Show symbols of current buffer
-nnoremap <silent> <space>o  :<C-u>Denite coc-symbols<cr>
-" Search symbols of current workspace
-nnoremap <silent> <space>t  :<C-u>Denite coc-workspace<cr>
-" Show diagnostics of current workspace
-nnoremap <silent> <space>a  :<C-u>Denite coc-diagnostic<cr>
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 
@@ -242,8 +179,8 @@ set laststatus=2
 set showtabline=0
 set expandtab
 set noshowmode
-set number
 set inccommand=nosplit
+set splitbelow
 
 if filereadable(expand("~/.vimrc_background"))
     let base16colorspace=256
