@@ -10,31 +10,28 @@ Plug 'chemzqm/denite-extra'
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
+set completeopt=noinsert,menuone,noselect,preview
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
 Plug 'ncm2/ncm2-path'
-Plug 'Shougo/echodoc.vim'
-let g:echodoc#enable_at_startup = 1
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'ncm2/ncm2-vim-lsp'
 Plug 'scrooloose/nerdtree'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 let g:airline_powerline_fonts = 1
 call plug#end()
 
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['pyls'],
-    \ }
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
 
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
@@ -52,20 +49,17 @@ noremap <leader>fs :w<CR>
 noremap <leader>ff :Denite -auto-resize file<CR>
 noremap <leader>fr :Denite -auto-resize file_old<CR>
 noremap <leader>fj :Denite -auto-resize line<CR>
-noremap <leader>fo :Denite -auto-resize outline<CR>
-noremap <leader>fm :Denite -auto-resize contextMenu<CR>
-noremap <leader>fe :Denite -auto-resize quickfix<CR>
+noremap <leader>fo :LspDocumentSymbol<CR>
 noremap <leader>pf :DeniteProjectDir -auto-resize file_rec<CR>
 noremap <leader>pj :DeniteProjectDir -auto-resize line<CR>
 noremap <leader>pe :DeniteProjectDir -auto-resize quickfix<CR>
 noremap <leader>bb :Denite -auto-resize buffer<CR>
 noremap <leader>qq :wqa<CR>
 noremap <leader>qf :qa!<CR>
-noremap <leader>el :Denite -auto-resize quickfix<CR>
+noremap <leader>el :LspDocumentDiagnostics<CR>
 noremap <leader>ws :split<CR>
 noremap <leader>wv :vsplit<CR>
 noremap <leader>wt :NERDTreeToggle<CR>
-noremap <leader>mr :call LanguageClient#textDocument_rename()<CR>
-noremap <leader>mgd :call LanguageClient#textDocument_definition()<CR>
-noremap <leader>md :call LanguageClient#textDocument_hover()<CR>
-noremap <leader>mf :call LanguageClient#textDocument_formatting()<CR>
+noremap <leader>gd :LspDefinition<CR>
+noremap <leader>md :LspHover<CR>
+noremap <leader>mf :LspDocumentFormat<CR>
