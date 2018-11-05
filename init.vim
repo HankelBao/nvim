@@ -14,36 +14,20 @@ set completeopt=noinsert,menuone,noselect,preview
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
 Plug 'ncm2/ncm2-path'
-Plug 'autozimu/LanguageClient-neovim'
-let g:LanguageClient_serverCommands = {
-\ 'go': ['go-langserver'],
-\ 'rust': ['rls'],
-\ 'python': ['pyls'],
-\ }
 Plug 'scrooloose/nerdtree'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'ryanoasis/vim-devicons'
 let g:airline_powerline_fonts = 1
 call plug#end()
 
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['pyls'],
+    \ }
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Cargo.toml'))},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
-
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
 
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
