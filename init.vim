@@ -24,7 +24,7 @@ let g:airline_powerline_fonts = 1
 call plug#end()
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rls'],
     \ 'python': ['pyls'],
     \ }
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
