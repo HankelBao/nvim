@@ -38,6 +38,7 @@ set splitbelow
 set previewheight=2
 set hidden
 set noshowmode
+set noswapfile
 
 let mapleader=" "
 noremap <leader><space> :
