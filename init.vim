@@ -1,10 +1,12 @@
-call plug#begin('~/.config/vim-plugged')
+call plug#begin('~/.config/nvim-plugged')
 	Plug 'chriskempson/base16-vim'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+	Plug 'nanotech/jellybeans.vim'
+	Plug 'ayu-theme/ayu-vim'
+	Plug 'itchyny/lightline.vim'
 
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'Shougo/echodoc.vim'
+	Plug 'liuchengxu/vista.vim'
 	
 	Plug 'scrooloose/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -14,25 +16,34 @@ call plug#end()
 
 let g:one_allow_italics = 1
 let g:airline_powerline_fonts = 1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let g:airline#extensions#coc#enabled = 1
+" let g:NERDTreeDirArrowExpandable = '⊕'
+" let g:NERDTreeDirArrowCollapsible = '⊗'
+let NERDTreeDirArrowExpandable=">"
+let NERDTreeDirArrowCollapsible="v"
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeMinimalMenu = 1
+let g:NERDTreeChDirMode = 2
 let g:echodoc_enable_at_startup = 1
+
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 noremap <silent> <C-P> :CocList files<CR>
 noremap <silent> <C-O> :CocList outline<CR>
+noremap <silent> <C-N> :NERDTreeToggle<CR>
 tnoremap <ESC> <C-\><C-n>
 
-colorscheme base16-default-dark
-set number
-set relativenumber
 set termguicolors
+" let ayucolor="light"
+let ayucolor="mirage"
+" let ayucolor="dark"
+colorscheme ayu
 set noshowmode
 set completeopt=noinsert,menuone,noselect
 set hidden
 set nobackup
 set nowritebackup
-set cmdheight=2
+set cmdheight=1
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -41,7 +52,7 @@ set updatetime=300
 set shortmess+=c
 
 " always show signcolumns
-set signcolumn=yes
+set signcolumn=auto
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -85,7 +96,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -125,9 +136,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
@@ -151,6 +159,8 @@ nnoremap <silent> <space>b  :<C-u>CocList buffers<cr>
 nnoremap <silent> <space>r :<C-u>CocList mru<cr>
 " Termianl
 nnoremap <silent> <space>t :<C-u>call TermToggle(12)<cr>
+" Quit
+nnoremap <silent> <space>q :q<CR>
 
 let g:term_buf = 0
 let g:term_win = 0
@@ -163,7 +173,7 @@ function! TermToggle(height)
         try
             exec "buffer " . g:term_buf
         catch
-            call termopen("powershell", {"detach": 0})
+            call termopen("zsh", {"detach": 0})
             let g:term_buf = bufnr("")
             set nonumber
             set norelativenumber
@@ -173,3 +183,19 @@ function! TermToggle(height)
         let g:term_win = win_getid()
     endif
 endfunction
+
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'ayu',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
