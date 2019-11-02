@@ -1,8 +1,8 @@
 set termguicolors
 " let ayucolor="light"
 " let ayucolor="mirage"
-let ayucolor="dark"
-colorscheme ayu
+" let ayucolor="dark"
+colorscheme iceberg
 set noshowmode
 set completeopt=noinsert,menuone,noselect
 set hidden

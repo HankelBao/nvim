@@ -2,8 +2,6 @@ let g:mapleader = "\<Space>"
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 
 noremap <silent> <C-P> :CocList files<CR>
-noremap <silent> <C-O> :CocList outline<CR>
-noremap <silent> <C-N> :NERDTreeToggle<CR>
 noremap <silent> <C-H> <C-W>h
 noremap <silent> <C-J> <C-W>j
 noremap <silent> <C-K> <C-W>k

@@ -16,7 +16,7 @@ function! StatusDiagnostic() abort
 endfunction
 
 let g:lightline = {
-      \ 'colorscheme': 'ayu',
+      \ 'colorscheme': 'iceberg',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified'] ]
@@ -25,7 +25,9 @@ let g:lightline = {
       \   'cocstatus': 'coc#status',
       \   'currentfunction': 'CocCurrentFunction',
       \   'diagnostics': 'StatusDiagnostic'
-      \ }
+      \ },
+      \ 'separator':    { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
 \ }
 
  " Use auocmd to force lightline update.
