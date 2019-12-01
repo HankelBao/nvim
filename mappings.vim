@@ -39,7 +39,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 nnoremap <silent> <space>b  :<C-u>CocList buffers<cr>
 " Toggle
 nnoremap <silent> <space>tt :<C-u>call TermToggle(12)<cr>
-nnoremap <silent> <space>tn :NERDTreeToggle<CR>
+nnoremap <silent> <space>tn :CocCommand explorer<CR>
 " Files
 nnoremap <silent> <space>fs :w<CR>
 nnoremap <silent> <space>ff :edit 

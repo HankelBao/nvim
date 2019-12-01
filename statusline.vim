@@ -1,34 +1,36 @@
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#coc#enabled = 1
+let g:airline_mode_map = {
+	\ '__'     : '-',
+	\ 'c'      : 'C',
+	\ 'i'      : 'I',
+	\ 'ic'     : 'I',
+	\ 'ix'     : 'I',
+	\ 'n'      : 'N',
+	\ 'multi'  : 'M',
+	\ 'ni'     : 'N',
+	\ 'no'     : 'N',
+	\ 'R'      : 'R',
+	\ 'Rv'     : 'R',
+	\ 's'      : 'S',
+	\ 'S'      : 'S',
+	\ ''     : 'S',
+	\ 't'      : 'T',
+	\ 'v'      : 'V',
+	\ 'V'      : 'V',
+	\ ''     : 'V',
+	\ }
 
-function! StatusDiagnostic() abort
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return '' | endif
-  let msgs = []
-  if get(info, 'error', 0)
-    call add(msgs, 'E' . info['error'])
-  endif
-  if get(info, 'warning', 0)
-    call add(msgs, 'W' . info['warning'])
-  endif
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
-endfunction
+let g:airline_filetype_overrides = {
+	\ 'defx':  ['defx', '%{b:defx.paths[0]}'],
+	\ 'gundo': [ 'Gundo', '' ],
+	\ 'help':  [ 'Help', '%f' ],
+	\ 'minibufexpl': [ 'MiniBufExplorer', '' ],
+	\ 'nerdtree': [ get(g:, 'NERDTreeStatusline', 'NERD'), '' ],
+	\ 'startify': [ 'startify', '' ],
+	\ 'vim-plug': [ 'Plugins', '' ],
+	\ 'vimfiler': [ 'vimfiler', '%{vimfiler#get_status_string()}' ],
+	\ 'vimshell': ['vimshell','%{vimshell#get_status_string()}'],
+	\ }
 
-let g:lightline = {
-      \ 'colorscheme': 'iceberg',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified'] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction',
-      \   'diagnostics': 'StatusDiagnostic'
-      \ },
-      \ 'separator':    { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' },
-\ }
-
- " Use auocmd to force lightline update.
- autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+let g:airline_theme='base16'
