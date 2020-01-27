@@ -16,6 +16,7 @@ call plug#begin('~/.config/nvim-plugged')
 	Plug 'airblade/vim-gitgutter'
 
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'Shougo/echodoc.vim'
 	Plug 'liuchengxu/vista.vim'
 	Plug 'majutsushi/tagbar'
 	
