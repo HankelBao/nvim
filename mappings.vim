@@ -1,11 +1,8 @@
 let g:mapleader = "\<Space>"
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 
-noremap <silent> <C-P> :CocList files<CR>
-noremap <silent> <C-H> <C-W>h
-noremap <silent> <C-J> <C-W>j
-noremap <silent> <C-K> <C-W>k
-noremap <silent> <C-L> <C-W>l
+nnoremap <silent> <space>: :
+
 tnoremap <ESC> <C-\><C-n>
 
 " Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
@@ -23,6 +20,8 @@ nnoremap <silent> <space>eq :wqa<CR>
 nnoremap <silent> <space>es :edit ~/.config/nvim/init.vim<CR>
 nnoremap <silent> <space>ei :PlugInstall<CR>
 nnoremap <silent> <space>eu :PlugUpdate<CR>
+" Quit
+nnoremap <silent> <space>qq :wqa<CR>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
@@ -36,16 +35,15 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Buffer
-nnoremap <silent> <space>b  :<C-u>CocList buffers<cr>
+nnoremap <silent> <space>bb :<C-u>CocList buffers<cr>
 " Toggle
 nnoremap <silent> <space>tt :<C-u>call TermToggle(12)<cr>
 nnoremap <silent> <space>tn :CocCommand explorer<CR>
 " Files
 nnoremap <silent> <space>fs :w<CR>
 nnoremap <silent> <space>ff :edit 
-nnoremap <silent> <space>fr :CocList mru<CR>
-" Close current window
-noremap <silent> <space>q :q<CR>
+nnoremap <silent> <space>fF :Files<CR>
+nnoremap <silent> <space>fr :History<CR>
 
 " Lsp functions
 " Remap for rename current word
@@ -63,7 +61,6 @@ nmap <leader>ma  <Plug>(coc-codeaction-selected)
 nmap <leader>mac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>mqf  <Plug>(coc-fix-current)
-
 
 let g:term_buf = 0
 let g:term_win = 0
