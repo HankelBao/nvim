@@ -1,25 +1,25 @@
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#coc#enabled = 1
-let g:airline_mode_map = {
-	\ '__'     : '-',
-	\ 'c'      : 'C',
-	\ 'i'      : 'I',
-	\ 'ic'     : 'I',
-	\ 'ix'     : 'I',
-	\ 'n'      : 'N',
-	\ 'multi'  : 'M',
-	\ 'ni'     : 'N',
-	\ 'no'     : 'N',
-	\ 'R'      : 'R',
-	\ 'Rv'     : 'R',
-	\ 's'      : 'S',
-	\ 'S'      : 'S',
-	\ ''     : 'S',
-	\ 't'      : 'T',
-	\ 'v'      : 'V',
-	\ 'V'      : 'V',
-	\ ''     : 'V',
-	\ }
+" let g:airline_mode_map = {
+" 	\ '__'     : '-',
+" 	\ 'c'      : 'C',
+" 	\ 'i'      : 'I',
+" 	\ 'ic'     : 'I',
+" 	\ 'ix'     : 'I',
+" 	\ 'n'      : 'N',
+" 	\ 'multi'  : 'M',
+" 	\ 'ni'     : 'N',
+" 	\ 'no'     : 'N',
+" 	\ 'R'      : 'R',
+" 	\ 'Rv'     : 'R',
+" 	\ 's'      : 'S',
+" 	\ 'S'      : 'S',
+" 	\ ''     : 'S',
+" 	\ 't'      : 'T',
+" 	\ 'v'      : 'V',
+" 	\ 'V'      : 'V',
+" 	\ ''     : 'V',
+" 	\ }
 
 let g:airline_filetype_overrides = {
 	\ 'defx':  ['defx', '%{b:defx.paths[0]}'],
