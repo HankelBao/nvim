@@ -1,4 +1,5 @@
 call plug#begin('~/.config/nvim-plugged')
+	Plug 'rust-lang/rust.vim'
 	Plug 'arzg/vim-colors-xcode'
 	Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary', 'branch': 'rpc'}
 	Plug 'airblade/vim-rooter'

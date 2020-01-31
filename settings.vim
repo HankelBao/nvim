@@ -6,7 +6,7 @@ set nowritebackup
 set nowrap
 set number
 set relativenumber
-set cmdheight=2
+set cmdheight=1
 set updatetime=300
 set signcolumn=yes
 set timeoutlen=500
