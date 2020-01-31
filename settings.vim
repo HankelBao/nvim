@@ -13,6 +13,10 @@ set timeoutlen=500
 set shortmess+=c
 set completeopt=menu,menuone,noinsert,noselect,preview
 
+set expandtab
+set shiftwidth=4
+set tabstop=4
+
 " let ayucolor="light"
 let ayucolor="mirage"
 " let ayucolor="dark"

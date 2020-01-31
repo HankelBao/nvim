@@ -1,7 +1,7 @@
 call plug#begin('~/.config/nvim-plugged')
+	Plug 'editorconfig/editorconfig-vim'
 	Plug 'rust-lang/rust.vim'
 	Plug 'arzg/vim-colors-xcode'
-	Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary', 'branch': 'rpc'}
 	Plug 'airblade/vim-rooter'
 	Plug 'justinmk/vim-sneak'
 	Plug 'Yggdroot/indentLine'
@@ -20,6 +20,7 @@ call plug#begin('~/.config/nvim-plugged')
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 	Plug 'liuchengxu/vim-which-key'
+	Plug '~/.fzf'
 	Plug 'junegunn/fzf.vim'
 	Plug 'justinmk/vim-sneak'
 	Plug 'tpope/vim-fugitive'
