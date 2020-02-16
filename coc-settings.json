@@ -1,11 +1,13 @@
 {
   "languageserver": {
     "clangd": {
-      "command": "clangd",
+      "command": "clangd-9",
       "args": ["--background-index"],
       "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "filetypes": ["c", "cpp", "objc", "objcpp"]
     }
   },
   "suggest.echodocSupport": "true",
+  "python.condaPath": "/home/hankelbao/miniconda3/bin/conda",
+  "python.setInterpreter": "/home/hankelbao/miniconda3/bin/python"
 }

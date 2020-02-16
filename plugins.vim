@@ -1,4 +1,4 @@
-call plug#begin('~/.config/nvim-plugged')
+call plug#begin('~/.config/vim-plugged')
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'rust-lang/rust.vim'
 	Plug 'arzg/vim-colors-xcode'
@@ -20,7 +20,6 @@ call plug#begin('~/.config/nvim-plugged')
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 	Plug 'liuchengxu/vim-which-key'
-	Plug '~/.fzf'
 	Plug 'junegunn/fzf.vim'
 	Plug 'justinmk/vim-sneak'
 	Plug 'tpope/vim-fugitive'
@@ -30,8 +29,9 @@ call plug#begin('~/.config/nvim-plugged')
 	Plug 'neoclide/coc-neco'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'Shougo/echodoc.vim'
-	Plug 'liuchengxu/vista.vim'
-	Plug 'majutsushi/tagbar'
+	" Plug 'liuchengxu/vista.vim'
+	" Plug 'majutsushi/tagbar'
+    Plug 'puremourning/vimspector'
 	
 	Plug 'scrooloose/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'

@@ -26,3 +26,5 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 " colorscheme base16-atlas
+
+let g:vim_markdown_conceal = 0
