@@ -21,10 +21,10 @@ set tabstop=4
 let ayucolor="mirage"
 " let ayucolor="dark"
 " colorscheme ayu
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-" colorscheme base16-atlas
+" if filereadable(expand("~/.vimrc_background"))
+"   let base16colorspace=256
+"   source ~/.vimrc_background
+" endif
+colorscheme base16-phd
 
 let g:vim_markdown_conceal = 0
