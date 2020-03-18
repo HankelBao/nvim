@@ -4,7 +4,7 @@ nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 
 let g:leader_map = {}
 
-let g:leader_map['`'] = [':bprevious', 'last-buffer']
+let g:leader_map['\'] = [':bprevious', 'last-buffer']
 let g:leader_map[':'] = [':Commands', 'commands']
 let g:leader_map[' '] = [':Files', 'switch-file']
 let g:leader_map['-'] = [':BTags', 'jump-to-symbol']
@@ -38,6 +38,7 @@ let g:leader_map['j'] = {
 	\ 't' : [':BTags', 'jump-to-tag-in-buffer'],
 	\ 'T' : [':Tags', 'jump-to-tag-in-project'],
     \ 'l' : [':Lines', 'jump-to-line-in-buffer'],
+    \ 's' : [':Rg', 'ripgrep-search'],
 	\ }
 let g:leader_map['b'] = {
 	\ 'name' : '+buffer',

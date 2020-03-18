@@ -7,7 +7,7 @@
       "filetypes": ["c", "cpp", "objc", "objcpp"]
     }
   },
-  "suggest.echodocSupport": "true",
-  "python.condaPath": "/home/hankelbao/miniconda3/bin/conda",
-  "python.setInterpreter": "/home/hankelbao/miniconda3/bin/python"
+  "suggest.echodocSupport": true,
+  "python.condaPath": "/home/hankel/miniconda3/bin/conda",
+  "java.errors.incompleteClasspath.severity": "ignore"
 }

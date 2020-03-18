@@ -25,6 +25,6 @@ let ayucolor="mirage"
 "   let base16colorspace=256
 "   source ~/.vimrc_background
 " endif
-colorscheme base16-phd
+colorscheme base16-github
 
 let g:vim_markdown_conceal = 0

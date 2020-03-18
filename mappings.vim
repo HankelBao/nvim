@@ -1,6 +1,8 @@
 " autocmd TermOpen * tnoremap <buffer> <ESC> <C-\><C-n>
 " autocmd FileType fzf tunmap <buffer> <ESC>
 
+tnoremap <Esc> <C-\><C-n>
+
 vnoremap > >gv
 vnoremap < <gv
 
