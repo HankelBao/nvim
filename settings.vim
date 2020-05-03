@@ -18,13 +18,16 @@ set shiftwidth=4
 set tabstop=4
 
 " let ayucolor="light"
-let ayucolor="mirage"
 " let ayucolor="dark"
 " colorscheme ayu
 " if filereadable(expand("~/.vimrc_background"))
 "   let base16colorspace=256
 "   source ~/.vimrc_background
 " endif
-colorscheme base16-github
+let g:gruvbox_contrast_light="hard"
+set background=light
+colorscheme jellybeans
 
 let g:vim_markdown_conceal = 0
+let g:python3_host_prog = '/usr/bin/python3'
+let g:chromatica#libclang_path='/usr/lib/libcc1.so'

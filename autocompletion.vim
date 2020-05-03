@@ -1,3 +1,9 @@
+call coc#add_extension('coc-lists', 'coc-explorer')
+call coc#add_extension('coc-actions')
+call coc#add_extension('coc-clangd')
+call coc#add_extension('coc-json', 'coc-tabnine')
+call coc#add_extension('coc-html', 'coc-java', 'coc-python', 'coc-lua')
+
 let g:echodoc_enable_at_startup = 1
 let g:echodoc#type = 'floating'
 " To use a custom highlight for the float window,

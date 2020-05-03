@@ -1,13 +1,6 @@
 {
-  "languageserver": {
-    "clangd": {
-      "command": "clangd",
-      "args": ["--background-index"],
-      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["c", "cpp", "objc", "objcpp"]
-    }
-  },
   "suggest.echodocSupport": true,
   "python.condaPath": "/home/hankel/miniconda3/bin/conda",
-  "java.errors.incompleteClasspath.severity": "ignore"
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "http.proxy": "http://127.0.0.1:20172"
 }
