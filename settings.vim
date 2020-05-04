@@ -26,7 +26,7 @@ set tabstop=4
 " endif
 let g:gruvbox_contrast_light="hard"
 set background=light
-colorscheme jellybeans
+colorscheme nord
 
 let g:vim_markdown_conceal = 0
 let g:python3_host_prog = '/usr/bin/python3'
