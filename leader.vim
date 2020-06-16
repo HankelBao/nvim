@@ -6,7 +6,7 @@ let g:leader_map = {}
 
 let g:leader_map['\'] = [':bprevious', 'last-buffer']
 let g:leader_map[':'] = [':CocList vimcommands', 'commands']
-let g:leader_map[' '] = [':CocList buffers', 'switch-buffer']
+let g:leader_map[' '] = [':CocList files', 'switch-buffer']
 let g:leader_map['-'] = [':CocList symbols', 'jump-to-symbol']
 let g:leader_map['x'] = [':CocCommand actions.open', 'actions-menu']
 let g:leader_map['w'] = {

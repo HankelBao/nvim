@@ -45,3 +45,15 @@ let g:airline#extensions#tabline#show_splits = 1
 " let g:airline#extensions#tabline#left_alt_sep = ''
 " let g:airline#extensions#tabline#right_sep = ''
 " let g:airline#extensions#tabline#right_alt_sep = ''
+
+
+" set statusline=
+" set statusline+=\ \:\:%{coc#status()}
+" set statusline+=%=
+" set statusline+=\ %{GetFuncSymbol()}%f
+" set statusline+=\ %lL:%cC
+" set statusline+=\ 
+
+
+
+

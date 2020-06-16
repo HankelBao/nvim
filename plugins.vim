@@ -1,47 +1,47 @@
+function! GetNVimVersion()
+    redir => s
+    silent! version
+    redir END
+    return matchstr(s, 'NVIM v\zs[^\n]*')
+endfunction
+
 call plug#begin('~/.config/vim-plugged')
-	Plug 'editorconfig/editorconfig-vim'
-	Plug 'rust-lang/rust.vim'
-	Plug 'arzg/vim-colors-xcode'
-	Plug 'airblade/vim-rooter'
 	Plug 'justinmk/vim-sneak'
-	Plug 'Yggdroot/indentLine'
-	Plug 'tveskag/nvim-blame-line'
 	Plug 'chriskempson/base16-vim'
-    Plug 'rakr/vim-one'
-    Plug 'morhetz/gruvbox'
-	Plug 'nanotech/jellybeans.vim'
-	Plug 'ayu-theme/ayu-vim'
-	Plug 'yuttie/inkstained-vim'
-	Plug 'beikome/cosme.vim'
-	Plug 'cocopon/iceberg.vim'
-    Plug 'arakashic/chromatica.nvim'
-	" Plug 'ryanoasis/vim-devicons'
-	" Plug 'vim-airline/vim-airline'
-	" Plug 'vim-airline/vim-airline-themes'
-	Plug 'godlygeek/tabular'
-	Plug 'plasticboy/vim-markdown'
-    Plug 'arcticicestudio/nord-vim'
-    Plug 'dracula/vim'
-	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
-	Plug 'liuchengxu/vim-which-key'
-    Plug 'lambdalisue/fern.vim'
-	Plug 'justinmk/vim-sneak'
-	Plug 'tpope/vim-fugitive'
-	Plug 'airblade/vim-gitgutter'
-
-	Plug 'Shougo/neco-vim'
-	Plug 'neoclide/coc-neco'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'Shougo/echodoc.vim'
-	" Plug 'liuchengxu/vista.vim'
-	" Plug 'majutsushi/tagbar'
-    Plug 'puremourning/vimspector'
-	
-	Plug 'scrooloose/nerdtree'
-	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'sheerun/vim-polyglot'
+	Plug 'liuchengxu/vim-which-key'
+	Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-rooter'
+    Plug 'liuchengxu/vim-clap'
+    Plug 'liuchengxu/vista.vim'
+
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 'markdown' }
+	Plug 'Shougo/neco-vim', { 'for': 'vim' }
+	Plug 'neoclide/coc-neco', { 'for': 'vim' }
+    if GetNVimVersion() == "0.4.3"
+        Plug 'jackguo380/vim-lsp-cxx-highlight', {'for' : ['c', 'cpp']}
+    endif
+    if GetNVimVersion() != "0.4.3"
+        Plug 'nvim-treesitter/nvim-treesitter'
+    endif
 call plug#end()
 
-let g:which_key_use_floating_win = 0
+let g:which_key_use_floating_win = 1
 let g:rooter_change_directory_for_non_project_files = 'current'
+
+
+if GetNVimVersion() != "0.4.3"
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,                    -- false will disable the whole extension
+    },
+    incremental_selection = {
+        enable = true,
+    },
+    ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
+}
+EOF
+endif

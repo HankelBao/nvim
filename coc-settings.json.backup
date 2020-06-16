@@ -2,6 +2,6 @@
   "suggest.echodocSupport": true,
   "python.condaPath": "/home/hankel/miniconda3/bin/conda",
   "java.errors.incompleteClasspath.severity": "ignore",
-  "clangd.semanticHighlighting": true,
-  "coc.preferences.currentFunctionSymbolAutoUpdate": true
+  "http.proxy": "http://172.30.112.1:20173",
+  "clangd.semanticHighlighting": true
 }
