@@ -1,5 +1,5 @@
 function! GetFuncSymbol() abort
-    let funcName = get(b:, 'coc_current_function', '')
+    let funcName = "" " get(b:, 'coc_current_function', '')
     if empty(funcName)
         return ''
     endif

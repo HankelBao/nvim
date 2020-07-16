@@ -2,7 +2,7 @@ runtime! plugins.vim
 runtime! nerdtree.vim
 runtime! autocompletion.vim
 " runtime! statusline.vim
-runtime! ruler.vim
+" runtime! ruler.vim
 runtime! settings.vim
 runtime! leader.vim
 runtime! mappings.vim
