@@ -18,7 +18,6 @@ nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
 
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).

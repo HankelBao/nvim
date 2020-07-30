@@ -5,10 +5,10 @@ nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 let g:leader_map = {}
 
 let g:leader_map['\'] = [':bprevious', 'last-buffer']
-let g:leader_map[':'] = [':CocList vimcommands', 'commands']
-let g:leader_map[' '] = [':CocList files', 'switch-buffer']
-let g:leader_map['-'] = [':CocList symbols', 'jump-to-symbol']
-let g:leader_map['x'] = [':CocCommand actions.open', 'actions-menu']
+let g:leader_map[':'] = [':Commands', 'commands']
+let g:leader_map[' '] = [':Files', 'switch-buffer']
+let g:leader_map['-'] = [':Vista finder', 'jump-to-symbol']
+" let g:leader_map['x'] = [':CocCommand actions.open', 'actions-menu']
 let g:leader_map['w'] = {
 	\ 'name' : '+windows' ,
 	\ 'w' : ['<C-W>w'     , 'other-window']          , 
@@ -36,10 +36,10 @@ let g:leader_map['q'] = {
 	\ }
 let g:leader_map['j'] = {
 	\ 'name' : '+jump',
-	\ 't' : [':CocList tags', 'jump-to-tag-in-buffer'],
-	\ 'T' : [':CocList tags', 'jump-to-tag-in-project'],
-    \ 'l' : [':CocList lines', 'jump-to-line-in-buffer'],
-    \ 's' : [':CocList grep', 'ripgrep-search'],
+	\ 't' : [':BTags', 'jump-to-tag-in-buffer'],
+	\ 'T' : [':Tags', 'jump-to-tag-in-project'],
+    \ 'l' : [':Lines', 'jump-to-line-in-buffer'],
+    \ 's' : [':Rg', 'ripgrep-search'],
 	\ }
 let g:leader_map['b'] = {
 	\ 'name' : '+buffer',
@@ -54,14 +54,15 @@ let g:leader_map['t'] = {
     \ 'f' : ['::Fern . -drawer', 'open-fern'],
 	\ 'n' : [':CocCommand explorer', 'toggle-file-tree'],
 	\ 'b' : [':ToggleBlameLine', 'toggle-blame-line'],
+    \ 'v' : [':Vista!!', 'toggle-vista'],
 	\ }
 let g:leader_map['f'] = {
 	\ 'name' : '+file',
 	\ 's': [':w', 'save-file'],
-	\ 'o': [':CocList files', 'open-file'],
-	\ 'f': [':Clap filer', 'open-file'],
+	\ 'o': [':edit ', 'open-file'],
+	\ 'f': [':GFiles', 'git-file'],
 	\ 'F': [':Files', 'find-file'],
-	\ 'r': [':CocList mru', 'recent-files'],
+	\ 'r': [':History', 'recent-files'],
 	\ }
 let g:leader_map['c'] = {
 	\ 'name' : '+code',

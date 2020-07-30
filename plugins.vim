@@ -17,6 +17,8 @@ call plug#begin('~/.config/vim-plugged')
     Plug 'liuchengxu/vista.vim'
 
 	" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 'markdown' }
+    Plug 'norcalli/typeracer.nvim'
+    Plug 'lambdalisue/fern.vim'
 
     Plug 'neovim/nvim-lsp'
     Plug 'puremourning/vimspector'
@@ -36,39 +38,6 @@ if has('nvim') && !exists('g:fzf_layout')
 endif
 autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-    highlight = {
-        enable = true,                    -- false will disable the whole extension
-    },
-    incremental_selection = {
-        enable = true,
-        keymaps = {                       -- mappings for incremental selection (visual mappings)
-          init_selection = '<leader>s<space>',         -- maps in normal mode to init the node/scope selection
-          node_incremental = "<leader>s+",       -- increment to the upper named parent
-          scope_incremental = "<leader>s-",      -- increment to the upper scope (as defined in locals.scm)
-          node_decremental = "<leader>ss",       -- decrement to the previous node
-        }
-    },
-    refactor = {
-      highlight_defintions = {
-        enable = true
-      },
-      smart_rename = {
-        enable = true,
-        smart_rename = "grr"              -- mapping to rename reference under cursor
-      },
-      navigation = {
-        enable = true,
-        goto_definition = "gnd",          -- mapping to go to definition of symbol under cursor
-        list_definitions = "gnD"          -- mapping to list all definitions in current file
-      }
-    },
-    ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
-}
-require'nvim_lsp'.clangd.setup{}
-require'nvim_lsp'.pyls.setup{}
-require'nvim_lsp'.vimls.setup{}
-EOF
-
 autocmd BufEnter * lua require'completion'.on_attach()
+
+let g:vista_default_executive = 'nvim_lsp'
