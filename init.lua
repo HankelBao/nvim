@@ -1,4 +1,4 @@
--- Treesitter
+-- Tree Sitter
 require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,                    -- false will disable the whole extension
@@ -29,13 +29,12 @@ require'nvim-treesitter.configs'.setup {
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
 }
 
--- NVim LSP
+-- Neovim LSP
 local nvim_lsp = require'nvim_lsp'
 nvim_lsp.clangd.setup{}
 nvim_lsp.pyls.setup{}
 nvim_lsp.vimls.setup{}
 nvim_lsp.sumneko_lua.setup{
-    cmd = {"/home/hankel/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/Linux/lua-language-server"};
+    cmd = {"/home/hankel/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/Linux/lua-language-server"}
 }
 nvim_lsp.rls.setup{}
--- cmd = {  "-E", "/home/hankel/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/main.lua" },

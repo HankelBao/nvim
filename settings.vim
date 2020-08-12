@@ -2,23 +2,16 @@ set termguicolors
 set noshowmode
 set hidden
 set nobackup
-set nowritebackup
 set nowrap
+set nowritebackup
 set cmdheight=1
-set updatetime=300
-set timeoutlen=500
 
 set expandtab
 set shiftwidth=4
 set tabstop=4
-set shortmess+=c
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+let ayucolor="dark"
+colorscheme ayu
 
 let g:vim_markdown_conceal = 0
-
-hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 
