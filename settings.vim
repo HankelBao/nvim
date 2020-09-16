@@ -9,9 +9,11 @@ set cmdheight=1
 set expandtab
 set shiftwidth=4
 set tabstop=4
+set inccommand=split
+set number
+set numberwidth=2
 
-let ayucolor="dark"
-colorscheme ayu
+colorscheme dracula
 
 let g:vim_markdown_conceal = 0
 

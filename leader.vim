@@ -1,3 +1,4 @@
+command Wd write|bdelete
 let g:mapleader = "\<Space>"
 call which_key#register('<Space>', "g:leader_map")
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
@@ -6,9 +7,9 @@ let g:leader_map = {}
 
 let g:leader_map['\'] = [':bprevious', 'last-buffer']
 let g:leader_map[':'] = [':Commands', 'commands']
-let g:leader_map[' '] = [':Files', 'switch-buffer']
+let g:leader_map[' '] = [':Clap files', 'fuzzy-finder']
 let g:leader_map['-'] = [':Vista finder', 'jump-to-symbol']
-" let g:leader_map['x'] = [':CocCommand actions.open', 'actions-menu']
+let g:leader_map['x'] = [':Wd', 'close']
 let g:leader_map['w'] = {
 	\ 'name' : '+windows' ,
 	\ 'w' : ['<C-W>w'     , 'other-window']          , 
@@ -27,7 +28,7 @@ let g:leader_map['w'] = {
 	\ '=' : ['<C-W>='     , 'balance-window']        ,
 	\ 's' : ['<C-W>s'     , 'split-window-below']    ,
 	\ 'v' : ['<C-W>v'     , 'split-window-right']    ,
-	\ '?' : ['Windows'    , 'fzf-window']            ,
+	\ '?' : [':Clap windows', 'fzf-window']            ,
 	\ }
 let g:leader_map['q'] = {
 	\ 'name' : '+quit',
@@ -43,7 +44,7 @@ let g:leader_map['j'] = {
 	\ }
 let g:leader_map['b'] = {
 	\ 'name' : '+buffer',
-	\ 'b': [':CocList buffers', 'select-buffer'],
+	\ 'b': [':Clap buffers', 'select-buffer'],
 	\ 'p': [':bprevious', 'prev-buffer'],
 	\ 'n': [':bnext', 'next-buffer'],
 	\ 'a': [':buffers', 'list-all-buffers'],
@@ -51,18 +52,17 @@ let g:leader_map['b'] = {
 let g:leader_map['t'] = {
 	\ 'name' : '+toggle',
 	\ 't' : [':call TermToggle(12)', 'toggle-terminal'],
-    \ 'f' : ['::Fern . -drawer', 'open-fern'],
+	\ 'f' : [':FloatermNew lf', 'open-file-manager'],
 	\ 'n' : [':CocCommand explorer', 'toggle-file-tree'],
 	\ 'b' : [':ToggleBlameLine', 'toggle-blame-line'],
-    \ 'v' : [':Vista!!', 'toggle-vista'],
+	\ 'v' : [':Vista!!', 'toggle-vista'],
 	\ }
 let g:leader_map['f'] = {
 	\ 'name' : '+file',
 	\ 's': [':w', 'save-file'],
-	\ 'o': [':edit ', 'open-file'],
-	\ 'f': [':GFiles', 'git-file'],
-	\ 'F': [':Files', 'find-file'],
-	\ 'r': [':History', 'recent-files'],
+	\ 'o': [':Clap filer', 'open-file'],
+	\ 'f': [':Clap file', 'find-file'],
+	\ 'r': [':Clap history', 'recent-files'],
 	\ }
 let g:leader_map['c'] = {
 	\ 'name' : '+code',
