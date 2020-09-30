@@ -1,2 +1,3 @@
-packadd vim
-colorscheme dracula
+" packadd vim
+packadd vim-one
+colorscheme one

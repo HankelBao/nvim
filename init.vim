@@ -1,6 +1,8 @@
 runtime! plugins.vim
 
-runtime! core/*.vim
+runtime! core/completion.vim
+runtime! core/edit.vim
+runtime! core/theme.vim
 
 runtime! ui/files.vim
 runtime! ui/leader.vim
