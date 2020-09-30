@@ -1,7 +1,0 @@
-{
-  "suggest.echodocSupport": true,
-  "python.condaPath": "/home/hankel/miniconda3/bin/conda",
-  "java.errors.incompleteClasspath.severity": "ignore",
-  "http.proxy": "http://172.30.112.1:20173",
-  "clangd.semanticHighlighting": true
-}

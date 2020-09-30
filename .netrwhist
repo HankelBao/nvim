@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/hankel/.config/nvim'
+let g:netrw_dirhist_5='/home/hankel/.config/nvim/.git'
+let g:netrw_dirhist_4='/home/hankel'
 let g:netrw_dirhist_3='/home/hankel/Documents'
 let g:netrw_dirhist_2='/home/hankel/leetcode/1028'
 let g:netrw_dirhist_1='/home/hankel/leetcode'

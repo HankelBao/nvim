@@ -1,4 +1,3 @@
-call minpac#add('liuchengxu/vim-which-key')
 packadd vim-which-key
 
 let g:which_key_use_floating_win = 1
@@ -9,10 +8,10 @@ nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 let g:leader_map = {}
 
 let g:leader_map['\'] = [':bprevious', 'last-buffer']
+let g:leader_map["'"] = [':FloatermToggle', 'toggle-terminal']
 let g:leader_map[':'] = [':Commands', 'commands']
 let g:leader_map[' '] = [':Clap files', 'fuzzy-finder']
 let g:leader_map['-'] = [':Vista finder', 'jump-to-symbol']
-let g:leader_map['x'] = [':Wd', 'close']
 let g:leader_map['w'] = {
 	\ 'name' : '+windows' ,
 	\ 'w' : ['<C-W>w'     , 'other-window']          ,
@@ -53,12 +52,14 @@ let g:leader_map['b'] = {
 	\ 'a': [':buffers', 'list-all-buffers'],
 	\ }
 let g:leader_map['t'] = {
-	\ 'name' : '+toggle',
+	\ 'name' : '+terminal',
 	\ 't' : [':FloatermToggle', 'toggle-terminal'],
-	\ 'f' : [':FloatermNew lf', 'open-file-manager'],
-	\ 'n' : [':CocCommand explorer', 'toggle-file-tree'],
-	\ 'b' : [':ToggleBlameLine', 'toggle-blame-line'],
-	\ 'v' : [':Vista!!', 'toggle-vista'],
+	\ 'T' : [':FloatermNew', 'new-integrated-terminal'],
+	\ 'n' : [':FloatermNew', 'new-integrated-terminal'],
+	\ 'j' : [':FloatermPrev', 'prev-terminal'],
+	\ 'k' : [':FloatermNext', 'next-terminal'],
+	\ 'q' : [':FloatermKill', 'kill-terminal'],
+	\ 'h' : [':FloatermHide', 'hide-terminal'],
 	\ }
 let g:leader_map['f'] = {
 	\ 'name' : '+file',

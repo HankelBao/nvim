@@ -1,13 +1,13 @@
 runtime! plugins.vim
-runtime! nerdtree.vim
-runtime! autocompletion.vim
-runtime! statusline.vim
-" runtime! ruler.vim
-runtime! settings.vim
-runtime! leader.vim
-runtime! mappings.vim
-runtime! markdown.vim
-runtime! commands.vim
-runtime! neovide.vim
+
+runtime! core/*.vim
+
+runtime! ui/files.vim
+runtime! ui/leader.vim
+runtime! ui/neovide.vim
+runtime! ui/statusline.vim
+
+runtime! lang/markdown.vim
+runtime! lang/latex.vim
 
 luafile $HOME/.config/nvim/init.lua

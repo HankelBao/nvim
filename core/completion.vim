@@ -1,19 +1,13 @@
-call minpac#add('nvim-treesitter/nvim-treesitter')
-call minpac#add('neovim/nvim-lsp')
-call minpac#add('nvim-lua/completion-nvim')
-call minpac#add('nvim-lua/diagnostic-nvim')
-
-call minpac#add('editorconfig/editorconfig-vim')
-call minpac#add('airblade/vim-rooter')
-call minpac#add('rakr/vim-one')
-call minpac#add('dracula/vim')
-call minpac#add('ryanoasis/vim-devicons')
-call minpac#add('psliwka/vim-smoothie')
-call minpac#add('liuchengxu/vista.vim')
-call minpac#add('puremourning/vimspector')
-
-
-packloadall
+packadd nvim-treesitter
+packadd nvim-lsp
+packadd completion-nvim
+packadd diagnostic-nvim
+packadd editorconfig-vim
+packadd vim-rooter
+packadd vim-devicons
+packadd vim-smoothie
+packadd vista.vim
+packadd vimspector
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -45,7 +39,6 @@ set number
 set relativenumber
 set numberwidth=2
 
-colorscheme dracula
 
 let g:vim_markdown_conceal = 0
 

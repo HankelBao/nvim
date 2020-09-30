@@ -1,7 +1,0 @@
-{
-  "suggest.echodocSupport": true,
-  "python.condaPath": "/home/hankel/miniconda3/bin/conda",
-  "java.errors.incompleteClasspath.severity": "ignore",
-  "clangd.semanticHighlighting": true,
-  "coc.preferences.currentFunctionSymbolAutoUpdate": true
-}

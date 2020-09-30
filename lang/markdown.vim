@@ -6,8 +6,7 @@
 " from markdown buffer to another buffer
 " default: 1
 " let g:mkdp_auto_close = 1
-call minpac#add('iamcco/markdown-preview.nvim', { 'type': 'opt', 'do': {->mkdp#util#install()}})
-packadd markdown-preview
+packadd markdown-preview.nvim
 
 let g:vim_markdown_math = 1
 let g:vim_markdown_folding_disabled = 1
