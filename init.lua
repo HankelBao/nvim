@@ -47,3 +47,6 @@ nvim_lsp.sumneko_lua.setup{
 nvim_lsp.rls.setup{
     on_attach=on_attach_vim
 }
+nvim_lsp.texlab.setup{
+    on_attach=on_attach_vim
+}

@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/hankel/Desktop/CS354/p2A'
 let g:netrw_dirhist_6='/home/hankel/.config/nvim'
 let g:netrw_dirhist_5='/home/hankel/.config/nvim/.git'
 let g:netrw_dirhist_4='/home/hankel'
