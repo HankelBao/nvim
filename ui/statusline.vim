@@ -1,4 +1,4 @@
-packadd spaceline.vim
+" packadd spaceline.vim
 
 " let g:airline_powerline_fonts = 1
 let g:airline#extensions#coc#enabled = 1
@@ -60,5 +60,5 @@ let g:spaceline_custom_vim_status= {"n": "N ","V":"V ","v":"v ","\<C-v>": "v ","
 let g:spaceline_seperate_style="slant"
 
 let g:spaceline_colorscheme = 'one'
-let g:spaceline_diagnostic_tool = 'nvim_lsp'
+let g:spaceline_diagnostic_tool = 'coc'
 let g:spaceline_diff_tool = 'git-gutter'

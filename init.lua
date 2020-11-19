@@ -1,7 +1,7 @@
 -- Tree Sitter
 require'nvim-treesitter.configs'.setup {
     highlight = {
-        enable = true,                    -- false will disable the whole extension
+        enable = false,                    -- false will disable the whole extension
     },
     incremental_selection = {
         enable = true,
@@ -30,16 +30,17 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- Neovim LSP
-
 local on_attach_vim = function(client)
   require'completion'.on_attach(client)
   require'diagnostic'.on_attach(client)
 end
 
-local nvim_lsp = require'nvim_lsp'
+local nvim_lsp = require'lspconfig'
 nvim_lsp.clangd.setup{on_attach=on_attach_vim}
+
 nvim_lsp.pyls.setup{on_attach=on_attach_vim}
-nvim_lsp.vimls.setup{on_attach=on_attach_vim}
+
+-- nvim_lsp.vimls.setup{on_attach=on_attach_vim}
 nvim_lsp.sumneko_lua.setup{
     cmd = {"/home/hankel/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/Linux/lua-language-server"},
     on_attach=on_attach_vim
