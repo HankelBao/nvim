@@ -1,16 +1,17 @@
-runtime! plugins.vim
+lua require('plugins')
 
-runtime! core/completion.vim
-runtime! core/edit.vim
-runtime! core/theme.vim
+runtime! vimscript/completion.vim
+runtime! vimscript/edit.vim
+runtime! vimscript/theme.vim
 
-runtime! ui/files.vim
-runtime! ui/leader.vim
-runtime! ui/neovide.vim
+runtime! vimscript/files.vim
+runtime! vimscript/leader.vim
+runtime! vimscript/neovide.vim
 " runtime! ui/statusline.vim
-runtime! ui/ruler.vim
+runtime! vimscript/ruler.vim
 
-runtime! lang/latex.vim
-runtime! lang/markdown.vim
+runtime! vimscript/latex.vim
+runtime! vimscript/markdown.vim
 
-luafile $HOME/.config/nvim/init.lua
+lua require('treesitter')
+lua require('lsp')

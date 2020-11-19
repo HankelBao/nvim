@@ -1,4 +1,3 @@
-packadd vim-clap
 packadd vim-floaterm
 let g:floaterm_position='bottom'
 let g:floaterm_width=1.0

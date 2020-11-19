@@ -6,8 +6,7 @@ packadd editorconfig-vim
 packadd vim-rooter
 packadd vim-devicons
 packadd vim-smoothie
-packadd vista.vim
-packadd vimspector
+" packadd vimspector
 
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 
