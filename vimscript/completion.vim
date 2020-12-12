@@ -1,7 +1,6 @@
 packadd nvim-treesitter
 packadd nvim-lspconfig
 packadd completion-nvim
-packadd diagnostic-nvim
 packadd editorconfig-vim
 packadd vim-rooter
 packadd vim-devicons

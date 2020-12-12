@@ -10,7 +10,7 @@ let g:leader_map = {}
 let g:leader_map['\'] = [':bprevious', 'last-buffer']
 let g:leader_map["'"] = [':FloatermToggle', 'toggle-terminal']
 let g:leader_map[':'] = [':Commands', 'commands']
-let g:leader_map[' '] = [':Telescope find_files', 'fuzzy-finder']
+let g:leader_map[' '] = [':Telescope find_files', 'Fuzzy Finder']
 let g:leader_map['-'] = [':Vista finder', 'jump-to-symbol']
 let g:leader_map['w'] = {
 	\ 'name' : '+windows' ,

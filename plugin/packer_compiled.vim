@@ -24,6 +24,12 @@ local plugins = {
     only_setup = false,
     path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim"
   },
+  ["nvcode-color-schemes.vim"] = {
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/nvcode-color-schemes.vim"
+  },
   ["packer.nvim"] = {
     loaded = false,
     only_sequence = false,
@@ -159,6 +165,16 @@ end
 
 -- Pre-load configuration
 -- Post-load configuration
+-- Config for: nvim-bufferline.lua
+loadstring("\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22config.bufferline\frequire\0")()
+-- Config for: nvim-treesitter
+loadstring("\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0")()
+-- Config for: galaxyline.nvim
+loadstring("\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22config.galaxyline\frequire\0")()
+-- Config for: vim-which-key
+loadstring("\27LJ\2\2-\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\18config.leader\frequire\0")()
+-- Config for: nvim-toggleterm.lua
+loadstring("\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22config.toggleterm\frequire\0")()
 -- Conditional loads
 -- Load plugins in order defined by `after`
 END

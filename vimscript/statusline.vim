@@ -56,9 +56,8 @@ let g:airline#extensions#tabline#show_splits = 1
 " set statusline+=\ %lL:%cC
 " set statusline+=\
 
-let g:spaceline_custom_vim_status= {"n": "N ","V":"V ","v":"v ","\<C-v>": "v ","i":"I ","R":"R ","s":"s ","t":"T ","c":"C ","!":"SE"}
-let g:spaceline_seperate_style="slant"
+let g:spaceline_seperate_style="arrow"
 
-let g:spaceline_colorscheme = 'one'
-let g:spaceline_diagnostic_tool = 'coc'
+let g:spaceline_colorscheme = 'space'
+let g:spaceline_diagnostic_tool = 'nvim_lsp'
 let g:spaceline_diff_tool = 'git-gutter'
