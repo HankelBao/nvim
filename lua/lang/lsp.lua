@@ -6,7 +6,6 @@ lsp_status.register_progress()
 local on_attach_vim = function(client)
   require'completion'.on_attach(client)
   require'lsp-status'.on_attach(client)
-  -- require'diagnostic'.on_attach(client)
 end
 
 local nvim_lsp = require'lspconfig'

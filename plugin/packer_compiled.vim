@@ -6,29 +6,46 @@ endif
 
 lua << END
 local plugins = {
-  ["blue-moon"] = {
-    loaded = false,
-    only_sequence = false,
-    only_setup = false,
-    path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/blue-moon"
-  },
-  ["gruvbox-material"] = {
-    loaded = false,
-    only_sequence = false,
-    only_setup = false,
-    path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/gruvbox-material"
-  },
   ["markdown-preview.nvim"] = {
     loaded = false,
     only_sequence = false,
     only_setup = false,
     path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim"
   },
-  ["nvcode-color-schemes.vim"] = {
+  ["nvim-treesitter"] = {
+    after = { "nvim-treesitter-refactor", "nvim-treesitter-context", "nvim-treesitter-textobjects" },
+    config = { 'require("config/treesitter")' },
     loaded = false,
     only_sequence = false,
     only_setup = false,
-    path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/nvcode-color-schemes.vim"
+    path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/nvim-treesitter"
+  },
+  ["nvim-treesitter-context"] = {
+    load_after = {
+      ["nvim-treesitter"] = true
+    },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-context"
+  },
+  ["nvim-treesitter-refactor"] = {
+    load_after = {
+      ["nvim-treesitter"] = true
+    },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-refactor"
+  },
+  ["nvim-treesitter-textobjects"] = {
+    load_after = {
+      ["nvim-treesitter"] = true
+    },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects"
   },
   ["packer.nvim"] = {
     loaded = false,
@@ -41,6 +58,23 @@ local plugins = {
     only_sequence = false,
     only_setup = false,
     path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/vim-latex-live-preview"
+  },
+  ["vim-obsession"] = {
+    after = { "vim-prosession" },
+    commands = { "Prosession" },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/vim-obsession"
+  },
+  ["vim-prosession"] = {
+    load_after = {
+      ["vim-obsession"] = true
+    },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/vim-prosession"
   }
 }
 
@@ -167,8 +201,8 @@ end
 -- Post-load configuration
 -- Config for: nvim-bufferline.lua
 loadstring("\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22config.bufferline\frequire\0")()
--- Config for: nvim-treesitter
-loadstring("\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22config.treesitter\frequire\0")()
+-- Config for: gitsigns.nvim
+loadstring("\27LJ\2\2/\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\20config.gitsigns\frequire\0")()
 -- Config for: galaxyline.nvim
 loadstring("\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22config.galaxyline\frequire\0")()
 -- Config for: vim-which-key
@@ -185,6 +219,7 @@ endfunction
 
 
 " Command lazy-loads
+command! -nargs=* -range -bang -complete=file Prosession call s:load(['vim-obsession'], { "cmd": "Prosession", "l1": <line1>, "l2": <line2>, "bang": <q-bang>, "args": <q-args> })
 
 " Keymap lazy-loads
 
@@ -192,4 +227,5 @@ augroup packer_load_aucmds
   au!
   " Filetype lazy-loads
   " Event lazy-loads
+  au VimEnter * ++once call s:load(['nvim-treesitter'], { "event": "VimEnter *" })
 augroup END

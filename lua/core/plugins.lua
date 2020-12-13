@@ -12,9 +12,15 @@ return require('packer').startup(function()
     -- Treesitter & Lsp
     use {
         'nvim-treesitter/nvim-treesitter',
-        config = function() require'config.treesitter' end
+        requires = {
+            { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter'},
+            { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
+            { 'romgrk/nvim-treesitter-context', after = 'nvim-treesitter' }
+        },
+        config = 'require("config/treesitter")',
+        event = 'VimEnter *'
     }
-    use 'romgrk/nvim-treesitter-context'
+
     use 'neovim/nvim-lspconfig'
     use 'nvim-lua/lsp-status.nvim'
     use 'nvim-lua/completion-nvim'
@@ -33,9 +39,11 @@ return require('packer').startup(function()
     use 'airblade/vim-rooter'
 
     -- Colorscheme & Beautify
-    use {'kyazdani42/blue-moon', opt=true}
-    use {'sainnhe/gruvbox-material', opt=true}
-    use {'christianchiarulli/nvcode-color-schemes.vim', opt=true}
+    use {'kyazdani42/blue-moon'}
+    use {'sainnhe/gruvbox-material'}
+    use {'bluz71/vim-nightfly-guicolors'}
+    use {'bluz71/vim-moonfly-colors'}
+    use {'christianchiarulli/nvcode-color-schemes.vim'}
     use 'ryanoasis/vim-devicons'
     use 'psliwka/vim-smoothie'
 
@@ -46,6 +54,11 @@ return require('packer').startup(function()
     -- Utils
     use 'voldikss/vim-floaterm'
     use {
+        'dhruvasagar/vim-prosession',
+        after = 'vim-obsession',
+        requires = {{'tpope/vim-obsession', cmd = 'Prosession'}}
+    }
+    use {
         'liuchengxu/vim-which-key',
         config = function() require'config.leader' end
     }
@@ -53,17 +66,17 @@ return require('packer').startup(function()
         'akinsho/nvim-toggleterm.lua',
         config = function() require'config.toggleterm' end
     }
-    use 'airblade/vim-gitgutter'
+    -- use 'airblade/vim-gitgutter'
     use 'wfxr/minimap.vim'
     use {
        'glepnir/galaxyline.nvim',
        config = function() require'config.galaxyline' end
     }
-    -- use {
-    --     'lewis6991/gitsigns.nvim',
-    --     requires = { 'nvim-lua/plenary.nvim' },
-    --     config = function() require'config.gitsigns' end
-    -- }
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function() require'config.gitsigns' end
+    }
 
     -- File Explorer
     use 'kyazdani42/nvim-web-devicons'
@@ -72,5 +85,6 @@ return require('packer').startup(function()
         'akinsho/nvim-bufferline.lua',
         config = function() require'config.bufferline' end
     }
+
 
 end)
