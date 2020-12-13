@@ -5,11 +5,10 @@ return require('packer').startup(function()
     -- Package Management
     use {'wbthomason/packer.nvim', opt = true}
 
-    -- Language
-	use {'xuhdev/vim-latex-live-preview', opt=true}
-    use {'iamcco/markdown-preview.nvim', opt=true}
+    -- Language Specific
+	use {'xuhdev/vim-latex-live-preview', opt=true} use {'iamcco/markdown-preview.nvim', opt=true}
 
-    -- Treesitter & Lsp
+    -- Treesitter & Highlight
     use {
         'nvim-treesitter/nvim-treesitter',
         requires = {
@@ -17,42 +16,40 @@ return require('packer').startup(function()
             { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
             { 'romgrk/nvim-treesitter-context', after = 'nvim-treesitter' }
         },
-        config = 'require("config/treesitter")',
+        config = function() require("config/treesitter") end,
         event = 'VimEnter *'
     }
 
-    use 'neovim/nvim-lspconfig'
-    use 'nvim-lua/lsp-status.nvim'
-    use 'nvim-lua/completion-nvim'
+    -- LSP & Completion
+    use {
+        'nvim-lua/completion-nvim',
+        requires = {
+            'nvim-lua/lsp-status.nvim',
+            'neovim/nvim-lspconfig',
+            'hrsh7th/vim-vsnip',
+            'hrsh7th/vim-vsnip-integ',
+            'microsoft/vscode-python',
+            'microsoft/vscode-cpptools',
+            'tjdevries/nlua.nvim'
+        },
+        config = function() require("lang.lsp") end,
+        event = 'VimEnter *'
+    }
 
     -- Debug
-    -- use 'puremourning/vimspector'
-    use 'mfussenegger/nvim-dap'
-    use 'theHamsta/nvim-dap-virtual-text'
-    -- use 'mfussenegger/nvim-dap-python'
+    use 'puremourning/vimspector'
+    use {
+        'mfussenegger/nvim-dap',
+        config = function() require("config.dap") end,
+        event = 'VimEnter *'
+    }
 
-    -- Picker
+    -- Editor Basics
     use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
-
-    -- Editorconfig
-    use 'editorconfig/editorconfig-vim'
-    use 'airblade/vim-rooter'
-
-    -- Colorscheme & Beautify
-    use {'kyazdani42/blue-moon'}
-    use {'sainnhe/gruvbox-material'}
-    use {'bluz71/vim-nightfly-guicolors'}
-    use {'bluz71/vim-moonfly-colors'}
-    use {'christianchiarulli/nvcode-color-schemes.vim'}
-    use 'ryanoasis/vim-devicons'
+    use 'wfxr/minimap.vim'
+    use 'romainl/vim-cool'
+    use {'editorconfig/editorconfig-vim', 'airblade/vim-rooter'}
     use 'psliwka/vim-smoothie'
-
-    -- Speed Editing & Moving
-    use 'justinmk/vim-sneak'
-    use 'machakann/vim-sandwich'
-
-    -- Utils
-    use 'voldikss/vim-floaterm'
     use {
         'dhruvasagar/vim-prosession',
         after = 'vim-obsession',
@@ -66,25 +63,35 @@ return require('packer').startup(function()
         'akinsho/nvim-toggleterm.lua',
         config = function() require'config.toggleterm' end
     }
-    -- use 'airblade/vim-gitgutter'
-    use 'wfxr/minimap.vim'
-    use {
-       'glepnir/galaxyline.nvim',
-       config = function() require'config.galaxyline' end
-    }
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
-        config = function() require'config.gitsigns' end
-    }
-
-    -- File Explorer
     use 'kyazdani42/nvim-web-devicons'
     use 'kyazdani42/nvim-tree.lua'
     use {
         'akinsho/nvim-bufferline.lua',
         config = function() require'config.bufferline' end
     }
+    use {
+       'glepnir/galaxyline.nvim',
+       config = function() require'config.galaxyline' end
+    }
 
+    -- Theme
+    use {
+        'kyazdani42/blue-moon',
+        'sainnhe/gruvbox-material',
+        'bluz71/vim-nightfly-guicolors',
+        'bluz71/vim-moonfly-colors',
+        'christianchiarulli/nvcode-color-schemes.vim'
+    }
+
+    -- Editing
+    use 'justinmk/vim-sneak'
+    use 'machakann/vim-sandwich'
+
+    -- Git
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function() require'config.gitsigns' end
+    }
 
 end)

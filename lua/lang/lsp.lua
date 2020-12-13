@@ -28,9 +28,25 @@ nvim_lsp.pyls.setup{
 --     on_attach=on_attach_vim,
 --     capabilities = lsp_status.capabilities
 -- }
+require('nlua.lsp.nvim').setup(require('lspconfig'), {
+    on_attach = on_attach_vim,
+    globals = {
+        "Color", "c", "Group", "g", "s", "use"
+    }
+})
+
 nvim_lsp.rls.setup{
     on_attach=on_attach_vim
 }
 nvim_lsp.texlab.setup{
     on_attach=on_attach_vim
 }
+
+vim.g.completion_enable_snippet = 'vim-vsnip'
+
+vim.cmd[[
+imap <expr> <C-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<C-j>'
+smap <expr> <C-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<C-j>'
+imap <expr> <C-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-k>'
+smap <expr> <C-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-k>'
+]]
