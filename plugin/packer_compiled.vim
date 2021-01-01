@@ -13,6 +13,13 @@ local plugins = {
     only_setup = false,
     path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/completion-nvim"
   },
+  ["gitsigns.nvim"] = {
+    config = { "\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20config.gitsigns\frequire\0" },
+    loaded = false,
+    only_sequence = false,
+    only_setup = false,
+    path = "/home/hankel/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim"
+  },
   ["markdown-preview.nvim"] = {
     loaded = false,
     only_sequence = false,
@@ -213,16 +220,18 @@ end
 
 -- Pre-load configuration
 -- Post-load configuration
--- Config for: nvim-toggleterm.lua
-loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22config.toggleterm\frequire\0")()
--- Config for: gitsigns.nvim
-loadstring("\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20config.gitsigns\frequire\0")()
--- Config for: galaxyline.nvim
-loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22config.galaxyline\frequire\0")()
--- Config for: vim-which-key
-loadstring("\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18config.leader\frequire\0")()
 -- Config for: nvim-bufferline.lua
 loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22config.bufferline\frequire\0")()
+-- Config for: lualine.nvim
+loadstring("\27LJ\1\2.\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\19config.lualine\frequire\0")()
+-- Config for: gruvbox.nvim
+loadstring("\27LJ\1\2,\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\17config.theme\frequire\0")()
+-- Config for: nvim-toggleterm.lua
+loadstring("\27LJ\1\0021\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\22config.toggleterm\frequire\0")()
+-- Config for: vim-which-key
+loadstring("\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18config.leader\frequire\0")()
+-- Config for: vim-sneak
+loadstring("\27LJ\1\2,\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\17config.sneak\frequire\0")()
 -- Conditional loads
 -- Load plugins in order defined by `after`
 END
@@ -241,5 +250,5 @@ augroup packer_load_aucmds
   au!
   " Filetype lazy-loads
   " Event lazy-loads
-  au VimEnter * ++once call s:load(['nvim-treesitter', 'nvim-dap', 'completion-nvim'], { "event": "VimEnter *" })
+  au VimEnter * ++once call s:load(['nvim-treesitter', 'nvim-dap', 'completion-nvim', 'gitsigns.nvim'], { "event": "VimEnter *" })
 augroup END

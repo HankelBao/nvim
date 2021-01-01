@@ -6,6 +6,7 @@ end
 
 dap.adapters.cpp = {
   type = 'executable',
+  name = 'lldb',
   attach = {
     pidProperty = "pid",
     pidSelect = "ask"
@@ -14,7 +15,6 @@ dap.adapters.cpp = {
   env = {
     LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES"
   },
-  name = "lldb"
 }
 
 dap.adapters.python = {
@@ -41,13 +41,13 @@ dap.configurations.cpp = {
     type = 'cpp',
     name = "Launch",
     request = "launch",
-    -- program = table.remove(args, 1),
-    args = args,
+    program = vim.fn.getcwd() .. "/a.out",
+    args = "",
     cwd = vim.fn.getcwd(),
     environment = {},
-    externalConsole = true,
-    MIMode = mi_mode or "lldb",
-    MIDebuggerPath = mi_debugger_path
+    externalConsole = false,
+    MIMode = "lldb",
+    MIDebuggerPath = 'lldb'
   },
 }
 

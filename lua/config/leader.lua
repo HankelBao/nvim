@@ -14,7 +14,7 @@ local leader_map = {}
 -- General
 leader_map["'"] = {':ToggleTerm', 'toggle-terminal'}
 leader_map[' '] = {':Telescope find_files', 'find-find'}
-leader_map['-'] = {':LuaTreeToggle', 'toggle-file-tree'}
+leader_map['-'] = {':NvimTreeToggle', 'toggle-file-tree'}
 leader_map['+'] = {':MinimapToggle', 'toggle-minimap'}
 
 -- Settings

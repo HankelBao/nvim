@@ -48,6 +48,7 @@ return require('packer').startup(function()
     use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
     use 'wfxr/minimap.vim'
     use 'romainl/vim-cool'
+    -- use 'yamatsum/nvim-cursorline'
     use {'editorconfig/editorconfig-vim', 'airblade/vim-rooter'}
     use 'psliwka/vim-smoothie'
     use {
@@ -69,29 +70,47 @@ return require('packer').startup(function()
         'akinsho/nvim-bufferline.lua',
         config = function() require'config.bufferline' end
     }
+    -- use {
+    --    'glepnir/galaxyline.nvim',
+    --    config = function() require'config.galaxyline' end
+    -- }
     use {
-       'glepnir/galaxyline.nvim',
-       config = function() require'config.galaxyline' end
+        'hoob3rt/lualine.nvim',
+        config = function() require 'config.lualine' end
     }
+    use 'dstein64/vim-startuptime'
 
     -- Theme
+    -- use {
+    --     'kyazdani42/blue-moon',
+    --     'sainnhe/gruvbox-material',
+    --     'bluz71/vim-nightfly-guicolors',
+    --     'bluz71/vim-moonfly-colors',
+    --     'christianchiarulli/nvcode-color-schemes.vim',
+    --     'glepnir/zephyr-nvim',
+    --     config = function() require 'config.theme' end
+    -- }
     use {
-        'kyazdani42/blue-moon',
-        'sainnhe/gruvbox-material',
-        'bluz71/vim-nightfly-guicolors',
-        'bluz71/vim-moonfly-colors',
-        'christianchiarulli/nvcode-color-schemes.vim'
+        "npxbr/gruvbox.nvim",
+        config = function() require 'config.theme' end,
+        requires = {"tjdevries/colorbuddy.vim"}
     }
 
     -- Editing
-    use 'justinmk/vim-sneak'
+    use {
+        'justinmk/vim-sneak',
+        config = function() require 'config.sneak' end
+    }
     use 'machakann/vim-sandwich'
+    use 'rstacruz/vim-closer'
 
     -- Git
     use {
         'lewis6991/gitsigns.nvim',
         requires = { 'nvim-lua/plenary.nvim' },
-        config = function() require'config.gitsigns' end
+        config = function() require'config.gitsigns' end,
+        event = 'VimEnter *'
     }
+    use 'f-person/git-blame.nvim'
 
 end)

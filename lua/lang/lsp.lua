@@ -20,6 +20,11 @@ nvim_lsp.pyls.setup{
     capabilities = lsp_status.capabilities
 }
 
+nvim_lsp.gopls.setup {
+    on_attach = on_attach_vim,
+    capabilities = lsp_status.capabilities
+}
+
 -- nvim_lsp.pyls_ms.setup{on_attach=on_attach_vim}
 
 -- nvim_lsp.vimls.setup{on_attach=on_attach_vim}
@@ -49,4 +54,21 @@ imap <expr> <C-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<C-j
 smap <expr> <C-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<C-j>'
 imap <expr> <C-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-k>'
 smap <expr> <C-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<C-k>'
+]]
+
+vim.g.completion_chain_complete_list = {
+    default = {
+        default = { {complete_items={'lsp', 'snippet', 'ts'}}}
+    }
+}
+
+vim.cmd[[
+autocmd BufEnter * lua require'completion'.on_attach()
+]]
+
+vim.cmd[[
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+set completeopt=menuone,noinsert,noselect
 ]]
