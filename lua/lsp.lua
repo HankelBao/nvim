@@ -1,6 +1,7 @@
 local paq = require'paq-nvim'.paq
 
 paq 'neovim/nvim-lspconfig'
+
 require'lspconfig'.pyls.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.clangd.setup{}
@@ -8,7 +9,6 @@ require'lspconfig'.rls.setup{}
 require'lspconfig'.html.setup{}
 
 paq 'nvim-lua/completion-nvim'
-paq 'nvim-treesitter/completion-treesitter'
 paq 'steelsojka/completion-buffers'
 vim.cmd([[autocmd BufEnter * lua require'completion'.on_attach()]])
 vim.cmd([[set completeopt=menu,menuone,noselect]])

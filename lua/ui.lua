@@ -29,4 +29,4 @@ paq 'kyazdani42/nvim-web-devicons'
 paq 'kyazdani42/nvim-tree.lua'
 vim.api.nvim_set_keymap('n', '<C-D>', '<cmd>NvimTreeToggle<cr>', { noremap = true, silent = true })
 
-vim.cmd([[set shortmess=a]])
+-- vim.cmd([[set shortmess=a]])
