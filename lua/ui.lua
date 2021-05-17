@@ -11,22 +11,26 @@ vim.api.nvim_set_keymap('n', '<C-R>', '<cmd>Telescope oldfiles<cr>', { noremap =
 -- Toggle Terminal
 paq 'akinsho/nvim-toggleterm.lua'
 require"toggleterm".setup{
-  size = 7,
-  open_mapping = [[<c-\>]],
-  shade_filetypes = {},
-  shade_terminals = true,
-  shading_factor = '1', -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
-  start_in_insert = true,
-  persist_size = true,
-  direction = 'horizontal',
+    size = 7,
+    open_mapping = [[<c-\>]],
+    shade_filetypes = {},
+    shade_terminals = true,
+    start_in_insert = true,
+    persist_size = true,
+    direction = 'horizontal',
 }
-vim.cmd([[tnoremap <Esc> <C-\><C-n>]])
-vim.api.nvim_set_keymap('n', '<C-T>', '<cmd>ToggleTerm<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('t', '<C-T>', '<cmd>ToggleTerm<cr>', { noremap = true, silent = true })
+--- vim.cmd([[tnoremap <Esc> <C-\><C-n>]])
+--- vim.api.nvim_set_keymap('n', '<C-T>', '<cmd>ToggleTerm<cr>', { noremap = true, silent = true })
+--- vim.api.nvim_set_keymap('t', '<C-T>', '<cmd>ToggleTerm<cr>', { noremap = true, silent = true })
 
 -- File Drawer
+-- paq 'kyazdani42/nvim-web-devicons'
+-- paq 'kyazdani42/nvim-tree.lua'
+-- vim.api.nvim_set_keymap('n', '<C-D>', '<cmd>NvimTreeToggle<cr>', { noremap = true, silent = true })
+
+-- Bufferline
+paq 'akinsho/nvim-bufferline.lua'
 paq 'kyazdani42/nvim-web-devicons'
-paq 'kyazdani42/nvim-tree.lua'
-vim.api.nvim_set_keymap('n', '<C-D>', '<cmd>NvimTreeToggle<cr>', { noremap = true, silent = true })
+require'bufferline'.setup{}
 
 -- vim.cmd([[set shortmess=a]])

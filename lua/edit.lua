@@ -8,3 +8,10 @@ vim.cmd([[
 
 -- EditorConfig
 paq 'editorconfig/editorconfig-vim'
+
+-- Sneak
+paq 'justinmk/vim-sneak'
+vim.cmd([[
+    map f <Plug>Sneak_f
+    map F <Plug>Sneak_F
+]])

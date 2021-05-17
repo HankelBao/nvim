@@ -27,3 +27,11 @@ vim.cmd([[
 	nnoremap <silent> <C-M>e :Lspsaga show_line_diagnostics<CR>
 	nnoremap <silent> <C-M>h :Lspsaga lsp_finder<CR>
 ]])
+
+paq 'kyazdani42/nvim-web-devicons'
+paq 'folke/trouble.nvim'
+require("trouble").setup({
+    height = 5,
+    auto_open = true,
+    auto_close = true,
+})

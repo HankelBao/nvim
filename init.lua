@@ -1,7 +1,10 @@
+require 'core'
 require 'lsp'
 require 'highlight'
-require 'statusline'
 require 'ui'
+require 'statusline'
 require 'edit'
 
 require 'lang.glsl'
+require 'lang.latex'
+
