@@ -1,23 +1,20 @@
 local paq = require'paq-nvim'.paq
 
 -- Colorscheme
-paq 'glepnir/zephyr-nvim'
-require('zephyr')
+paq 'tomasiser/vim-code-dark'
+paq 'navarasu/onedark.nvim'
+-- vim.g.onedark_style = 'default'
+require('onedark').setup()
 
 -- Treesitter
 paq 'nvim-treesitter/nvim-treesitter'
 require'nvim-treesitter.configs'.setup {
-	ensure_installed = "all",
 	highlight = {
 		enable = true,
 	},
 }
 
--- Number
-vim.cmd([[set number]])
-vim.cmd([[set relativenumber]])
-
--- Cursor move
+-- Cursor Move Landing Effect
 paq 'edluffy/specs.nvim'
 require('specs').setup{ 
     show_jumps  = true,
@@ -41,6 +38,10 @@ require('specs').setup{
 paq 'karb94/neoscroll.nvim'
 require('neoscroll').setup()
 
--- Indent
-paq 'glepnir/indent-guides.nvim'
-require('indent_guides').setup()
+-- Indent Guide
+-- paq 'glepnir/indent-guides.nvim'
+-- require('indent_guides').setup()
+
+-- Color
+paq 'norcalli/nvim-colorizer.lua'
+require'colorizer'.setup()

@@ -10,8 +10,10 @@ vim.cmd([[
 paq 'editorconfig/editorconfig-vim'
 
 -- Sneak
-paq 'justinmk/vim-sneak'
-vim.cmd([[
-    map f <Plug>Sneak_f
-    map F <Plug>Sneak_F
-]])
+paq 'ggandor/lightspeed.nvim'
+
+-- Registers
+paq 'gennaro-tedesco/nvim-peekup'
+
+-- Match Up
+paq 'andymass/vim-matchup'

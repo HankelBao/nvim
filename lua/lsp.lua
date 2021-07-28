@@ -1,35 +1,34 @@
 local paq = require'paq-nvim'.paq
+local wk = require("which-key")
 
+-- LSP Configuration
 paq 'neovim/nvim-lspconfig'
-
-require'lspconfig'.pyls.setup{}
+require'lspconfig'.pylsp.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.rls.setup{}
 require'lspconfig'.html.setup{}
+require'lspconfig'.vuels.setup{}
 
-paq 'nvim-lua/completion-nvim'
-paq 'steelsojka/completion-buffers'
-vim.cmd([[autocmd BufEnter * lua require'completion'.on_attach()]])
-vim.cmd([[set completeopt=menu,menuone,noselect]])
-vim.cmd([[
-	inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : '<Tab>'
-	inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : '<S-Tab>'
-]])
+-- Outlines
+paq 'simrat39/symbols-outline.nvim'
 
+-- Lsp Saga 
 paq 'glepnir/lspsaga.nvim'
-vim.cmd([[
-	nnoremap <silent> <C-M>s :Lspsaga signature_help<CR>
-	nnoremap <silent> <C-M>a :Lspsaga code_action<CR>
-	nnoremap <silent> <C-M>k :Lspsaga hover_doc<CR>
-	nnoremap <silent> <C-M>r :Lspsaga rename<CR>
-	nnoremap <silent> <C-M>d :Lspsaga preview_definition<CR>
-	nnoremap <silent> <C-M>e :Lspsaga show_line_diagnostics<CR>
-	nnoremap <silent> <C-M>h :Lspsaga lsp_finder<CR>
-]])
+wk.register({
+    ["<space>m"] = {
+         s = {"<cmd>Lspsaga signature_help<cr>", "Signature Help"},
+         a = {"<cmd>Lspsaga code_action<cr>", "Actions"},
+         k = {"<cmd>Lspsaga hover_doc<cr>", "Hover Doc"},
+         r = {"<cmd>Lspsaga rename<cr>", "Rename"},
+         d = {"<cmd>Lspsaga preview_definition<cr>", "Preview Definition"}, e = {"<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics"},
+         h = {"<cmd>Lspsaga lsp_finder<cr>", "Lsp Finder"},
+    },
+})
 
-paq 'kyazdani42/nvim-web-devicons'
+-- Trouble (Diagnostics)
 paq 'folke/trouble.nvim'
+paq 'kyazdani42/nvim-web-devicons'
 require("trouble").setup({
     height = 5,
     auto_open = true,

@@ -1,5 +1,7 @@
 require 'core'
+require 'window'
 require 'lsp'
+require 'autocompletion'
 require 'highlight'
 require 'ui'
 require 'statusline'
@@ -7,4 +9,4 @@ require 'edit'
 
 require 'lang.glsl'
 require 'lang.latex'
-
+require 'lang.csv'
