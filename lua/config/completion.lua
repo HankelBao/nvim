@@ -1,7 +1,4 @@
-local paq = require'paq-nvim'.paq
-
 -- Coupe Completion Engine
-paq 'hrsh7th/nvim-compe'
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -57,36 +54,3 @@ vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
--- Customize Completion Candidates like VSCode
-paq 'onsails/lspkind-nvim'
-require('lspkind').init({
-    with_text = true,
-    preset = 'codicons',
-    symbol_map = {
-      Text = '',
-      Method = 'ƒ',
-      Function = '',
-      Constructor = '',
-      Variable = '',
-      Class = '',
-      Interface = 'ﰮ',
-      Module = '',
-      Property = '',
-      Unit = '',
-      Value = '',
-      Enum = '了',
-      Keyword = '',
-      Snippet = '﬌',
-      Color = '',
-      File = '',
-      Folder = '',
-      EnumMember = '',
-      Constant = '',
-      Struct = ''
-    },
-})
-
--- Signature support
-paq 'ray-x/lsp_signature.nvim'
-require'lsp_signature'.on_attach()
