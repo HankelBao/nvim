@@ -54,6 +54,9 @@ require 'paq' {
     'kyazdani42/nvim-tree.lua';
     'akinsho/nvim-bufferline.lua';
     'sindrets/diffview.nvim';
+
+    -- Languages
+    'chrisbra/csv.vim'
 }
 
 require('onedark').setup()
@@ -79,6 +82,7 @@ require('specs').setup{
         nofile = true,
     },
 }
+
 require('neoscroll').setup()
 require'colorizer'.setup()
 require'lsp_signature'.on_attach()

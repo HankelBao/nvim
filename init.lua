@@ -1,5 +1,11 @@
 require 'plugins'
 require 'settings'
+
+require 'config.completion'
+require 'config.lspkind'
+require 'config.lualine'
+require 'config.which-key'
+require 'config.telescope'
 -- require 'lang.glsl'
 -- require 'lang.latex'
 -- require 'lang.csv'
