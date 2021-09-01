@@ -92,6 +92,7 @@ require'lspconfig'.clangd.setup{}
 require'lspconfig'.rls.setup{}
 require'lspconfig'.html.setup{}
 require'lspconfig'.vuels.setup{}
+require'lspconfig'.gopls.setup{}
 local wk = require("which-key")
 wk.register({
     ["<space>m"] = {
